@@ -1,0 +1,121 @@
+version: 2.1
+executors:
+  main:
+    docker:
+      - image: 'circleci/node:10'
+
+jobs:
+  install_dependencies:
+    executor: main
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - node-v1-{{ .Branch }}-
+            - node-v1-
+      - run: npm ci
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+  build:
+    executor: main
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+      - run:
+          name: Building static site
+          command: npm run build
+      - persist_to_workspace:
+          root: public
+          paths:
+            - "*"
+  test:
+    executor: main
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+      - run:
+          name: Linting javascript
+          command: npm run lint
+  deploy:
+    executor: main
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+      - attach_workspace:
+          at: public
+      - run:
+          name: Remove netlify admin
+          command: |
+                rm -rf public/admin
+      - add_ssh_keys:
+          fingerprints:
+            - "a1:1a:7b:6b:dc:f1:09:f3:58:9a:97:e0:fb:c3:06:98"
+      - run:
+          name: Setup git config
+          command: |
+                git config user.email "$GIT_EMAIL"
+                git config user.name "$GIT_USERNAME"
+      - run:
+          name: Deploying to GitHub pages
+          command: npm run deploy:ci
+  create_production_pr:
+    executor: main
+    steps:
+      - checkout
+      - run:
+          name: Create staging -> master PR
+          command: |
+                curl -u "$GITHUB_USERNAME:$GITHUB_TOKEN" \
+                  -d '{"title":"Staging -> Master automated PR", "head":"staging", "base":"master", "body":"Automated PR generated on changes to staging for staging -> master", "maintainer_can_modify":true,"draft":false}' \
+                  -H "Content-Type: application/json" \
+                  -X POST \
+                  https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/pulls
+
+workflows:
+  version: 2
+  build_test_and_deploy:
+    jobs:
+      - install_dependencies:
+          filters:
+            branches:
+              ignore:
+                - /^cms\/.*/
+      - build:
+          requires:
+            - install_dependencies
+          filters:
+            branches:
+              ignore:
+                - /^cms\/.*/
+      - test:
+          requires:
+            - install_dependencies
+          filters:
+            branches:
+              ignore:
+                - /^cms\/.*/
+      - create_production_pr:
+          requires:
+            - build
+            - test
+          filters:
+            branches:
+              only:
+                - staging
+      - deploy:
+          requires:
+            - build
+            - test
+          filters:
+            branches:
+              only:
+                - master

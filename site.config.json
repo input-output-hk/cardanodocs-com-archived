@@ -1,0 +1,10 @@
+{
+  "availableLanguages": {
+    "en": { "label": "English", "flag": "🇺🇸", "locale": "en_US" },
+    "ja": { "label": "日本人", "flag": "🇯🇵", "locale": "ja_JP" }
+  },
+  "alternativeLanguages": {
+    "en-us": "en",
+    "en-gb": "en"
+  }
+}
