@@ -15,11 +15,11 @@ const Query = ({ render }) => (
                 childMarkdownRemark{
                   frontmatter {
                     navigation {
-                      labels {
-                        home
-                        features
-                        documentation
-                        components
+                      items{
+                        label
+                        title
+                        slug
+                        href
                       }
                     }
                   }

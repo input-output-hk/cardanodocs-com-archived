@@ -2,6 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import Query from './Query'
 import Link from '../Link'
+import PropTypes from 'prop-types'
+import { getURIPathWithoutLang } from '../../helpers/url'
+import { LanguageConsumer } from '../../state'
+import { InputNavbar } from '../Search'
 
 const Container = styled.div`
   width: 100%;
@@ -23,62 +27,68 @@ const Nav = styled.nav`
   }
 
   > ul {
+    margin:0;
+    li+li{
+      border-left:.1rem solid ${({ theme }) => theme.colors.accent};
+      &.search-input{
+        border:0;
+      }
+    }
     > li {
       margin: 0;
       display: inline-block;
-      padding: 0 1rem;
       position: relative;
+      a{
+        padding:2rem;
+        display: inline-block;
+      }
+      &.active a{
+        color: ${({ theme }) => theme.colors.text};
+        background: ${({ theme }) => theme.colors.accent};
+      }
     }
   }
 `
 
-const DesktopNavigation = () => (
-  <Container className='text-align-center'>
-    <Query
-      render={({ navigation }) => (
-        <Nav className='text-transform-uppercase'>
-          <ul>
-            <li>
-              <Link
-                href='/'
-                activeClassName='active'
-                tracking={{ label: 'desktop_navigation_home' }}
-              >
-                {navigation.labels.home}
-              </Link>
-            </li>
-            <li>
-              <Link
-                href='/features/'
-                activeClassName='active'
-                tracking={{ label: 'desktop_navigation_features' }}
-              >
-                {navigation.labels.features}
-              </Link>
-            </li>
-            <li>
-              <Link
-                href='/documentation/'
-                activeClassName='active'
-                tracking={{ label: 'desktop_navigation_documentation' }}
-              >
-                {navigation.labels.documentation}
-              </Link>
-            </li>
-            <li>
-              <Link
-                href='/components/'
-                activeClassName='active'
-                tracking={{ label: 'desktop_navigation_components' }}
-              >
-                {navigation.labels.components}
-              </Link>
-            </li>
-          </ul>
-        </Nav>
-      )}
-    />
-  </Container>
+const isActive = (lang, href) => {
+  const uri = getURIPathWithoutLang(lang)
+  return (uri.substr(0, href.length) === href) ? 'active' : ''
+}
+
+const DesktopNavigation = ({ className }) => (
+  <LanguageConsumer>
+    {({ lang }) => (
+      <Container className={`text-align-right ${className}`}>
+        <Query
+          render={({ navigation }) => (
+            <Nav className='text-transform-uppercase'>
+              <ul>
+                {navigation.items.map((item, index) => (
+                  <li className={isActive(lang, item.href)}>
+                    <Link
+                      href={item.href}
+                      activeClassName='active'
+                      tracking={{ label: 'desktop_navigation_' + item.slug }}
+                      title={item.title}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+                <li className='search-input'>
+                  <InputNavbar />
+                </li>
+              </ul>
+            </Nav>
+          )}
+        />
+      </Container>
+    )}
+  </LanguageConsumer>
 )
+
+DesktopNavigation.propTypes = {
+  className: PropTypes.string
+}
 
 export default DesktopNavigation

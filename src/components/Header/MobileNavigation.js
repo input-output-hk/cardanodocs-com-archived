@@ -2,12 +2,14 @@ import React, { useState, Fragment, useEffect } from 'react'
 import styled from 'styled-components'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Query from './Query'
+import PropTypes from 'prop-types'
 import Link from '../Link'
 import { MdMenu, MdClose } from 'react-icons/md'
 import { addEventListener, removeEventListener, getScrollOffset, scrollTo } from '../../helpers/dom'
+import { InputNavbar } from '../Search'
 
 const Container = styled.div`
-  position: fixed;
+  position: absolute;
   width: 100%;
   z-index: 4;
   left: 0;
@@ -33,7 +35,7 @@ const Nav = styled.nav`
   width: 100%;
   position: relative;
   transform: translate(0, 0);
-  background-color: ${({ theme }) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.primary};
   z-index: 2;
   width: 100%;
   padding: 0 1rem;
@@ -88,7 +90,7 @@ const Nav = styled.nav`
   }
 `
 
-const MobileNavigation = () => {
+const MobileNavigation = ({ className }) => {
   const [ scrollPosition, setScrollPosition ] = useState(getScrollOffset())
   const [ mobileNavVisible, setMobileNavVisible ] = useState(false)
 
@@ -126,7 +128,7 @@ const MobileNavigation = () => {
   }, [ mobileNavVisible ])
 
   return (
-    <Container className='text-align-center'>
+    <Container className={`text-align-center ${className}`}>
       <Query
         render={({ navigation }) => (
           <Fragment>
@@ -147,45 +149,21 @@ const MobileNavigation = () => {
               { mobileNavVisible &&
                 <Nav key='nav' className='text-transform-uppercase'>
                   <ul>
-                    <li>
-                      <Link
-                        onClick={closeNav}
-                        href='/'
-                        activeClassName='active'
-                        tracking={{ label: 'mobile_navigation_home' }}
-                      >
-                        {navigation.labels.home}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        onClick={closeNav}
-                        href='/features/'
-                        activeClassName='active'
-                        tracking={{ label: 'mobile_navigation_features' }}
-                      >
-                        {navigation.labels.features}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        onClick={closeNav}
-                        href='/documentation/'
-                        activeClassName='active'
-                        tracking={{ label: 'mobile_navigation_documentation' }}
-                      >
-                        {navigation.labels.documentation}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        onClick={closeNav}
-                        href='/components/'
-                        activeClassName='active'
-                        tracking={{ label: 'mobile_navigation_components' }}
-                      >
-                        {navigation.labels.components}
-                      </Link>
+                    {navigation.items.map((item, index) => (
+                      <li>
+                        <Link
+                          href={item.href}
+                          onClick={closeNav}
+                          activeClassName='active'
+                          tracking={{ label: 'desktop_navigation_' + item.slug }}
+                          title={item.title}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                    <li className='search-input'>
+                      <InputNavbar />
                     </li>
                   </ul>
                 </Nav>
@@ -196,6 +174,10 @@ const MobileNavigation = () => {
       />
     </Container>
   )
+}
+
+MobileNavigation.propTypes = {
+  className: PropTypes.string
 }
 
 export default MobileNavigation
