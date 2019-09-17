@@ -9,25 +9,23 @@ const Query = ({ render }) => (
       <StaticQuery
         query={graphql`
           query{
-            allFile(filter:{relativePath:{glob:"content/pages/features/*.md"}}) {
+            allContent: allFile(filter:{relativePath:{glob:"content/pages/generated/**/*.md"}}) {
               nodes{
                 relativePath,
                 childMarkdownRemark{
+                  html
                   frontmatter {
-                    content {
-                      title
-                      content_body
-                    }
+                    title
                   }
                 }
               }
             }
           }
         `}
-        render={({ allFile }) => {
-          const content = allFile.nodes.filter(node => node.relativePath === `content/pages/features/features-${lang}.md`).shift()
-          if (!content) throw new Error(`No content found for features page using language ${lang}`)
-          return render(content.childMarkdownRemark)
+        render={({ allContent }) => {
+          return render({
+            frontmatter: allContent.nodes
+          })
         }}
       />
     )}
