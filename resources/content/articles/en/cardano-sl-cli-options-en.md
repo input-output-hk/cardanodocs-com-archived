@@ -1,8 +1,9 @@
 ---
 title: Cardano SL CLI Options
 parent: technical-details
-anchor_links: []
-old_path: /technical/cli-options/
+order: 2
+redirects:
+  - /technical/cli-options/
 ---
 Cardano SL CLI Options
 ----------------------

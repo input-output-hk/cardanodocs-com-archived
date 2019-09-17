@@ -1,14 +1,7 @@
 ---
 title: Introduction
 parent: ''
-anchor_links:
-  - id: cryptocurrency-basics
-    label: Cryptocurrency Basics
-  - id: what-makes-cardano-sl-special
-    label: What Makes Cardano SL Special?
-  - id: beyond-settlement-layer
-    label: Beyond Settlement Layer
-old_path: /introduction/
+order: 1
 ---
 Dear reader, the purpose of this documentation is to provide you with
 understanding of the first layer of Cardano Platform stack, the Settlement

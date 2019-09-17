@@ -1,8 +1,9 @@
 ---
 title: Technical Details
 parent: ''
-anchor_links: []
-old_path: /technical/
+order: 2
+redirect:
+  - /technical/
 ---
 # Cardano SL Technical Details
 

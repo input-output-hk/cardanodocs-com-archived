@@ -60,16 +60,16 @@ const DesktopNavigation = ({ className }) => (
     {({ lang }) => (
       <Container className={`text-align-right ${className}`}>
         <Query
-          render={({ navigation }) => (
+          render={(items) => (
             <Nav className='text-transform-uppercase'>
               <ul>
-                {navigation.items.map((item, index) => (
-                  <li className={isActive(lang, item.href)}>
+                {items.map((item) => (
+                  <li key={item.path} className={isActive(lang, item.path)}>
                     <Link
-                      href={item.href}
+                      href={item.path}
                       activeClassName='active'
-                      tracking={{ label: 'desktop_navigation_' + item.slug }}
-                      title={item.title}
+                      tracking={{ label: 'desktop_navigation_' + item.path }}
+                      title={item.label}
                     >
                       {item.label}
                     </Link>

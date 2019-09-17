@@ -1,8 +1,9 @@
 ---
 title: CSL Application-Level Messaging
 parent: protocols
-anchor_links: []
-old_path: /technical/protocols/csl-application-level/
+order: 1
+redirects:
+  - /technical/protocols/csl-application-level/
 ---
 # CSL Application-Level Messaging
 

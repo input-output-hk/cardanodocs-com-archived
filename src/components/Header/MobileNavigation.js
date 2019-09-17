@@ -130,7 +130,7 @@ const MobileNavigation = ({ className }) => {
   return (
     <Container className={`text-align-center ${className}`}>
       <Query
-        render={({ navigation }) => (
+        render={(items) => (
           <Fragment>
             <Link
               href='/'
@@ -149,14 +149,14 @@ const MobileNavigation = ({ className }) => {
               { mobileNavVisible &&
                 <Nav key='nav' className='text-transform-uppercase'>
                   <ul>
-                    {navigation.items.map((item, index) => (
+                    {items.map((item) => (
                       <li>
                         <Link
-                          href={item.href}
+                          href={item.path}
                           onClick={closeNav}
                           activeClassName='active'
-                          tracking={{ label: 'desktop_navigation_' + item.slug }}
-                          title={item.title}
+                          tracking={{ label: `desktop_navigation_${item.path}` }}
+                          title={item.label}
                         >
                           {item.label}
                         </Link>
