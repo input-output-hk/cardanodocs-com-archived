@@ -2,6 +2,7 @@ const path = require('path')
 const data = require('../data')
 
 function cleanNavigationContext (context) {
+  context.isLink = Boolean(context.content)
   delete context.content
   context.children.forEach(child => {
     cleanNavigationContext(child)
