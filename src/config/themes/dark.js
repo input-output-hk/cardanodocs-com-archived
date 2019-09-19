@@ -1,7 +1,9 @@
 import IOHKSymbol from '../../../resources/images/dark/iohk-symbol-inverted.png'
 import Cardano from '../../../resources/images/dark/card-logo.svg'
+import { darcula } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 export default {
+  label: 'dark',
   colors: {
     primary: '#131325',
     primaryHighlight: '#4f4f7c',
@@ -36,6 +38,7 @@ export default {
       extraLarge: 1200
     }
   },
+  codeTheme: darcula,
   images: {
     IOHKSymbol,
     Cardano,

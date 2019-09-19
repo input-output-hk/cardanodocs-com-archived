@@ -1,6 +1,7 @@
 import dark from './dark'
 import TinyColor from '@ctrl/tinycolor'
 import IOHKSymbol from '../../../resources/images/light/iohk-symbol.png'
+import { vs } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 const colors = {}
 Object.keys(dark.colors).map(key => {
@@ -12,6 +13,7 @@ Object.keys(dark.colors).map(key => {
 })
 
 export default {
+  label: 'light',
   colors: {
     ...colors,
     primary: '#e5e5e5',
@@ -21,6 +23,7 @@ export default {
     subtle: 'rgba(0, 0, 0, 0.1)',
     subtleAccent: 'rgba(0, 0, 0, 0.25)'
   },
+  codeTheme: vs,
   dimensions: { ...dark.dimensions },
   images: {
     IOHKSymbol,
