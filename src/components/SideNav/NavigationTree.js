@@ -14,6 +14,10 @@ const Nav = styled.ul`
       font-weight:600;
     }
   }
+  @media(max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
+    text-align:center;
+    padding:0;
+  }
 `
 
 const NavigationTree = ({ items, path }) => (

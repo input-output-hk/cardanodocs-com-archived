@@ -8,7 +8,10 @@ import PageTitle from '../components/PageTitle'
 import { InputNavbar } from '../components/Search'
 
 const NavCol = styled.nav`
-  border-right: 1px solid ${({ theme }) => theme.colors.subtleAccent};
+  @media(min-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
+    border-right: 1px solid ${({ theme }) => theme.colors.subtleAccent};
+    text-align:center;
+  }
   flex: 1;
 `
 const ContentCol = styled.article`
@@ -18,6 +21,9 @@ const ContentCol = styled.article`
 
 const ContentWrap = styled.main`
   display: flex;
+  @media(max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
+    flex-direction: column;
+  }
 `
 
 const SearchWrap = styled.aside`
