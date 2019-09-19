@@ -7,10 +7,6 @@ import { navigate } from 'gatsby'
 const Form = styled.form`
   width: 100%;
   display: block;
-  margin-left:1rem;
-  @media screen and (min-width: ${({ theme }) => theme.dimensions.screenSizes.large}px) {
-    min-width:31rem;
-  }
   @media screen and (max-width: ${({ theme }) => (theme.dimensions.screenSizes.large - 100)}px) {
     min-width:10rem;
     max-width:16rem;

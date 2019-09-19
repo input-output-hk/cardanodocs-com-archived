@@ -17,7 +17,8 @@ export default {
     primary: '#e5e5e5',
     primaryHighlight: '#c5c5c5',
     alertBackground: '#ffffff',
-    alertForeground: '#000000'
+    alertForeground: '#000000',
+    backgroundWash: 'rgba(0, 0, 0, 0.1)'
   },
   dimensions: { ...dark.dimensions },
   images: {

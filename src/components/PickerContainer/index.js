@@ -9,11 +9,11 @@ const BlockContainer = styled.div`
   position: absolute;
   z-index: 4;
   width: 100%;
-  max-width: ${({ theme }) => theme.dimensions.contentWidth};
+  max-width: 35rem};
   display: block;
-  top: 2rem;
+  top: 1rem;
   padding: 0 ${({ theme }) => theme.dimensions.contentGutterSize};
-  left: 50%;
+  right: -22rem;
   transform: translateX(-50%);
 
   &:hover {
@@ -29,11 +29,11 @@ const BlockContainer = styled.div`
 
 const Wrapper = styled.div`
   width: 100%;
+  max-width: 20rem;
   display: flex;
   align-items: center;
 
   > div {
-    flex: 1;
   }
 
   @media screen and (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
@@ -51,13 +51,10 @@ const Wrapper = styled.div`
 `
 
 const LanguageContainer = styled.div`
-  width: 100%;
-  max-width: 17rem;
-  min-width: 12rem;
-  flex: 1;
+  flex: 3;
   text-align: right;
   display: flex;
-  align-items: center;
+  align-items: rightx;
 
   &.short {
     width: auto;
@@ -66,7 +63,7 @@ const LanguageContainer = styled.div`
 
   > div {
     text-align: left;
-    flex: 1;
+    flex: 30%;
   }
 `
 

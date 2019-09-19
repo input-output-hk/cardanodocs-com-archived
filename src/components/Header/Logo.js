@@ -11,12 +11,12 @@ img,strong{
   vertical-align:middle
 }
 img{
-  margin: 0 0 1.6rem 0;
+  margin: 2rem 0 0 0;
   width: 2.8rem;
 }
 strong{
   display:inline-block;
-  padding:0 2rem;
+  padding: 2rem 0 0 1rem;
   color: ${({ theme }) => theme.colors.heading};
 }
 @media screen and (min-width: ${({ theme }) => theme.dimensions.screenSizes.extraLarge}px) {
@@ -30,7 +30,7 @@ const Logo = () => (
       <Wrap>
         <Link href='/'>
           <img src={theme.images.Logo} alt='Logo' />
-          <strong>Cardano Testnets</strong>
+          <strong>Cardano Documentation</strong>
         </Link>
       </Wrap>
     )}

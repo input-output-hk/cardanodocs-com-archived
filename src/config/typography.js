@@ -29,7 +29,7 @@ export default new Typography({
   overrideStyles: ({ adjustFontSizeTo, rhythm }, options, styles) => ({
     'h1': {
       'margin': '5rem 0 3rem',
-      'text-align': 'center',
+      'text-align': 'left',
       'font-weight': '300',
       'line-height': '5.6rem'
     },

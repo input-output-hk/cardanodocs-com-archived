@@ -59,6 +59,10 @@ export default createGlobalStyle`
     }
   }
 
+  .active {
+    color: ${({ theme }) => theme.colors.active};
+  }
+
   img {
     max-width: 100%;
     height: auto;
@@ -112,6 +116,10 @@ export default createGlobalStyle`
 
   .display-inline-block {
     display: inline-block;
+  }
+
+  .ml-5 {
+    margin-left: 5rem;
   }
 
   ${'' /**

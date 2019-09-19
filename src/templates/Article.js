@@ -4,12 +4,14 @@ import styled from 'styled-components'
 import Markdown from '../components/Markdown'
 import FullWidthSection from '../components/FullWidthSection'
 import SideNav from '../components/SideNav'
+import PageTitle from '../components/PageTitle'
 
 const NavCol = styled.nav`
   flex: 1;
 `
 const ContentCol = styled.article`
   flex: 3;
+  padding: 4rem;
 `
 
 const ContentWrap = styled.main`
@@ -21,6 +23,7 @@ const Article = ({ pageContext }) => {
   return (
     <Fragment>
       <FullWidthSection>
+        <PageTitle />
         <ContentWrap>
           {pageContext.navigationContext.children.length > 0 &&
             <NavCol>

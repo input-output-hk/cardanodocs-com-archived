@@ -5,15 +5,15 @@ import Link from '../Link'
 import PropTypes from 'prop-types'
 import { getURIPathWithoutLang } from '../../helpers/url'
 import { LanguageConsumer } from '../../state'
-import { InputNavbar } from '../Search'
 
 const Container = styled.div`
   width: 100%;
+  margin-left:3rem;
 `
 
 const Nav = styled.nav`
   width: 100%;
-  margin: 0 auto;
+  
 
   a {
     font-weight: 600;
@@ -58,7 +58,7 @@ const isActive = (lang, href) => {
 const DesktopNavigation = ({ className }) => (
   <LanguageConsumer>
     {({ lang }) => (
-      <Container className={`text-align-right ${className}`}>
+      <Container className={`text-align-left ${className}`}>
         <Query
           render={(items) => (
             <Nav className='text-transform-uppercase'>
@@ -76,9 +76,6 @@ const DesktopNavigation = ({ className }) => (
                     </Link>
                   </li>
                 ))}
-                <li className='search-input'>
-                  <InputNavbar />
-                </li>
               </ul>
             </Nav>
           )}

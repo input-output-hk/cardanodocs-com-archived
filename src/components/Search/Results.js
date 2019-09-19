@@ -144,7 +144,7 @@ export default class Results extends React.Component {
           <Query
             render={({ frontmatter }) => (
               <FullWidthSection>
-                <Helmet title={`Searching - Cardano Testnets`} />
+                <Helmet title={`Searching - Cardano Documentation`} />
                 <Wrapper>
                   <h3 className='section-title'>Search</h3>
                   <Input value={this.state.searching} label='Type to search ...' submitLabel='Search' onChange={this.isSearching} />

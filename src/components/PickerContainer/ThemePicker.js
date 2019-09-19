@@ -6,11 +6,11 @@ import config from '../../config'
 import Link from '../Link'
 
 const Container = styled.div`
+  margin-top: 1rem;
   a {
     color: ${({ theme }) => theme.colors.text};
     font-size: 3rem;
     opacity: 0.6;
-
     @media screen and (max-width: ${config.mobileHeaderBreakPoint - 1}px) {
       font-size: 2rem;
     }
