@@ -5,16 +5,22 @@ import MobileNavigation from './MobileNavigation'
 import Logo from './Logo'
 import { ThemeConsumer } from '../../state'
 
-const Main = styled.main`
+const Header = styled.header`
   position: relative;
   z-index: 2;
-  margin:0rem auto 0;
+  margin: 0rem auto 0;
   width: 100%;
   max-width: ${({ theme }) => theme.dimensions.contentWidth};
   padding: 0 ${({ theme }) => theme.dimensions.contentGutterSize};
+  display:flex;
 `
 
-const MainTitleLogo = styled.div`
+const NavWrap = styled.div`
+  flex: 3;
+`
+
+const HeaderTitleLogo = styled.div`
+  flex:1;
   z-index: 2;
 `
 
@@ -23,12 +29,14 @@ export default () => (
     {({ theme }) => (
       <Fragment>
         <MobileNavigation className='hide-on-desktop' />
-        <Main>
-          <MainTitleLogo>
+        <Header>
+          <HeaderTitleLogo>
             <Logo />
-          </MainTitleLogo>
-          <DesktopNavigation className='hide-on-mobile' />
-        </Main>
+          </HeaderTitleLogo>
+          <NavWrap>
+            <DesktopNavigation className='hide-on-mobile' />
+          </NavWrap>
+        </Header>
       </Fragment>
     )}
   </ThemeConsumer>

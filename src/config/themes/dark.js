@@ -5,7 +5,8 @@ export default {
   colors: {
     primary: '#131325',
     primaryHighlight: '#4f4f7c',
-    backgroundWash: 'rgba(255, 255, 255, 0.1)',
+    subtle: 'rgba(255, 255, 255, 0.1)',
+    subtleAccent: 'rgba(255, 255, 255, 0.25)',
     secondary: 'rgba(83, 87, 135, 0.95)',
     interactive: 'rgb(31, 193, 195)',
     interactiveHighlight: 'rgb(63, 224, 226)',
