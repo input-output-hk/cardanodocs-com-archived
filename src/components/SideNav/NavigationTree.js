@@ -15,7 +15,7 @@ const Nav = styled.ul`
     }
   }
   @media(max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
-    text-align:center;
+    text-align: center;
     padding:0;
   }
 `

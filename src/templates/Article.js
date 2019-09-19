@@ -10,7 +10,6 @@ import { InputNavbar } from '../components/Search'
 const NavCol = styled.nav`
   @media(min-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
     border-right: 1px solid ${({ theme }) => theme.colors.subtleAccent};
-    text-align:center;
   }
   flex: 1;
 `
