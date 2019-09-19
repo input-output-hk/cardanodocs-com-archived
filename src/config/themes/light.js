@@ -18,7 +18,8 @@ export default {
     primaryHighlight: '#c5c5c5',
     alertBackground: '#ffffff',
     alertForeground: '#000000',
-    backgroundWash: 'rgba(0, 0, 0, 0.1)'
+    subtle: 'rgba(0, 0, 0, 0.1)',
+    subtleAccent: 'rgba(0, 0, 0, 0.25)'
   },
   dimensions: { ...dark.dimensions },
   images: {

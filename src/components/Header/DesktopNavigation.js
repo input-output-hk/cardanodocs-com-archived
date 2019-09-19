@@ -8,13 +8,12 @@ import { LanguageConsumer } from '../../state'
 
 const Container = styled.div`
   width: 100%;
-  margin-left:3rem;
 `
 
 const Nav = styled.nav`
   width: 100%;
-  
-
+  display:flex;
+  justify-content: flex-end;
   a {
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -28,12 +27,7 @@ const Nav = styled.nav`
 
   > ul {
     margin:0;
-    li+li{
-      border-left:.1rem solid ${({ theme }) => theme.colors.accent};
-      &.search-input{
-        border:0;
-      }
-    }
+    
     > li {
       margin: 0;
       display: inline-block;

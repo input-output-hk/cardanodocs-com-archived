@@ -5,8 +5,10 @@ import Markdown from '../components/Markdown'
 import FullWidthSection from '../components/FullWidthSection'
 import SideNav from '../components/SideNav'
 import PageTitle from '../components/PageTitle'
+import { InputNavbar } from '../components/Search'
 
 const NavCol = styled.nav`
+  border-right: 1px solid ${({ theme }) => theme.colors.subtleAccent};
   flex: 1;
 `
 const ContentCol = styled.article`
@@ -18,15 +20,22 @@ const ContentWrap = styled.main`
   display: flex;
 `
 
+const SearchWrap = styled.aside`
+  padding: 4rem 3rem 3rem 0;
+`
+
 const Article = ({ pageContext }) => {
   console.log('Article', pageContext)
   return (
     <Fragment>
+      <PageTitle title={pageContext.navigationContext.title} />
       <FullWidthSection>
-        <PageTitle />
         <ContentWrap>
           {pageContext.navigationContext.children.length > 0 &&
             <NavCol>
+              <SearchWrap className='search-input'>
+                <InputNavbar />
+              </SearchWrap>
               <SideNav items={pageContext.navigationContext.children} path={`/${pageContext.navigationContext.key}`} />
             </NavCol>
           }

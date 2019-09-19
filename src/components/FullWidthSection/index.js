@@ -7,7 +7,7 @@ const Container = styled.div`
   width: 100vw;
   left: 50%;
   margin-left: -50vw;
-  background: ${({ background, theme }) => background || theme.colors.backgroundWash};
+  background: ${({ background, theme }) => background || theme.colors.subtle};
 `
 
 const InnerContainer = styled.div`

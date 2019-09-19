@@ -5,7 +5,6 @@ import NavigationTree from './NavigationTree'
 
 const Container = styled.div`
   width: 100%;
-  border-right: 1px solid ${({ theme }) => theme.colors.backgroundWash};
 `
 
 const Nav = styled.nav`
