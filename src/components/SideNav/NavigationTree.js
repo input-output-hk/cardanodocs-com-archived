@@ -6,6 +6,14 @@ import Link from '../Link'
 const Nav = styled.ul`
   list-style: none;
   padding: 0 3rem 0 0;
+  p {
+    font-weight:600;
+  }
+  a {
+    &.active {
+      font-weight:600;
+    }
+  }
 `
 
 const NavigationTree = ({ items, path }) => (

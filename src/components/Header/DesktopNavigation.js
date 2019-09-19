@@ -21,7 +21,7 @@ const Nav = styled.nav`
     &:hover,
     &.active,
     &:focus {
-      color: ${({ theme }) => theme.colors.text}
+      color: ${({ theme }) => theme.colors.interactiveHighlight}
     }
   }
 

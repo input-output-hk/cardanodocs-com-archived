@@ -68,7 +68,7 @@ export default createGlobalStyle`
   }
 
   .active {
-    color: ${({ theme }) => theme.colors.active};
+    color: ${({ theme }) => theme.colors.interactiveHighlight};
   }
 
   img {
