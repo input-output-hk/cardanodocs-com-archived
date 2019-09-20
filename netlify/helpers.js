@@ -16,3 +16,17 @@ export const getLanguageSelectWidget = ({ name = 'lang', label = 'Language', req
   })),
   default: Object.keys(config.availableLanguages)[0]
 })
+
+const getArticles = lang => JSON.parse(process.env.IOHK_ARTICLES)[lang] || []
+
+export const getArticlesSelectWidget = ({ name = 'parent', label = 'Parent article', required, multiple, lang }) => ({
+  label,
+  name,
+  required,
+  multiple,
+  widget: 'select',
+  options: getArticles(lang).map(article => ({
+    label: article.label,
+    value: article.value
+  }))
+})
