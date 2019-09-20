@@ -65,6 +65,7 @@ export default createGlobalStyle`
     white-space: -pre-wrap !important;      /* Opera 4-6 */
     white-space: -o-pre-wrap !important;    /* Opera 7 */
     word-wrap: break-word !important;       /* Internet Explorer 5.5+ */
+    letter-spacing: 0.1rem;
   }
 
   .active {
