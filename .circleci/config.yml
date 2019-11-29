@@ -58,7 +58,7 @@ jobs:
                 rm -rf public/admin
       - add_ssh_keys:
           fingerprints:
-            - "a1:1a:7b:6b:dc:f1:09:f3:58:9a:97:e0:fb:c3:06:98"
+            - "a3:81:20:e4:2a:12:1d:fb:26:6f:8d:7f:1a:46:f6:90"
       - run:
           name: Setup git config
           command: |
