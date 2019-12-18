@@ -16,7 +16,7 @@ function getContext (article) {
 }
 
 module.exports = ({ createPage }) => {
-  let rootRedirectCreated = false
+  let rootCreated = false
   const articleTemplate = path.join(__dirname, '../../../src/templates/Article.js')
   const redirectTemplate = path.join(__dirname, '../../../src/templates/Redirect.js')
   function createChildPages (lang, articles, { context = null, basePath = '/' } = {}) {
@@ -25,25 +25,26 @@ module.exports = ({ createPage }) => {
       const path = `${basePath}${article.key}/`
 
       if (article.content) {
-        createPage({
-          path: `/${lang}${path}`,
-          component: articleTemplate,
-          context: {
-            navigationContext,
-            content: article.content
-          }
-        })
-
-        if (!rootRedirectCreated) {
+        if (!rootCreated) {
           createPage({
             path: `/${lang}/`,
-            component: redirectTemplate,
+            component: articleTemplate,
             context: {
-              to: `/${lang}${path}`
+              navigationContext,
+              content: article.content
             }
           })
 
-          rootRedirectCreated = true
+          rootCreated = true
+        } else {
+          createPage({
+            path: `/${lang}${path}`,
+            component: articleTemplate,
+            context: {
+              navigationContext,
+              content: article.content
+            }
+          })
         }
 
         if (article.redirects) {
