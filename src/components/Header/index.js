@@ -4,6 +4,7 @@ import DesktopNavigation from './DesktopNavigation'
 import MobileNavigation from './MobileNavigation'
 import Logo from './Logo'
 import { ThemeConsumer } from '../../state'
+import { Typography } from '@material-ui/core'
 
 const Header = styled.header`
   position: relative;
@@ -22,6 +23,7 @@ const NavWrap = styled.div`
 const HeaderTitleLogo = styled.div`
   flex:1;
   z-index: 2;
+  flex-direction:row;
 `
 
 export default () => (
@@ -32,6 +34,7 @@ export default () => (
         <Header>
           <HeaderTitleLogo>
             <Logo />
+            <Typography variant='h4' color='primary'>Material-UI Version</Typography>
           </HeaderTitleLogo>
           <NavWrap>
             <DesktopNavigation className='hide-on-mobile' />

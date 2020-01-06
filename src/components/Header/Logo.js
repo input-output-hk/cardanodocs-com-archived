@@ -19,9 +19,9 @@ strong{
   padding: 2rem 0 0 1rem;
   color: ${({ theme }) => theme.colors.heading};
 }
-@media screen and (min-width: ${({ theme }) => theme.dimensions.screenSizes.extraLarge}px) {
+/* @media screen and (min-width: ${({ theme }) => theme.dimensions.screenSizes.extraLarge}px) {
   float:left;
-}
+} */
 `
 
 const Logo = () => (
