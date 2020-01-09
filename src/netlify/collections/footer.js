@@ -16,13 +16,13 @@ export default {
       widget: 'string'
     },
     {
-      name: 'community_info',
-      label: 'Community info heading',
+      label: 'Community email address',
+      name: 'community_email',
       widget: 'string'
     },
     {
-      name: 'community_email',
-      label: 'Community Email',
+      name: 'community_info',
+      label: 'Community info heading',
       widget: 'string'
     },
     {
@@ -64,7 +64,7 @@ export default {
     {
       label: 'Footer text',
       name: 'content_body',
-      description: 'Text blob in footer, parsed as markdown',
+      description: 'Text blob in footer, parsed as HTML',
       widget: 'markdown'
     }
   ]

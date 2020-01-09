@@ -13,7 +13,7 @@ const Header = styled.header`
   width: 100%;
   max-width: ${({ theme }) => theme.dimensions.contentWidth};
   padding: 0 ${({ theme }) => theme.dimensions.contentGutterSize};
-  display:flex;
+  display: flex;
 `
 
 const NavWrap = styled.div`
@@ -21,9 +21,9 @@ const NavWrap = styled.div`
 `
 
 const HeaderTitleLogo = styled.div`
-  flex:1;
+  flex: 1;
   z-index: 2;
-  flex-direction:row;
+  flex-direction: row;
 `
 
 export default () => (
@@ -34,7 +34,9 @@ export default () => (
         <Header>
           <HeaderTitleLogo>
             <Logo />
-            <Typography variant='h4' color='primary'>Material-UI Version</Typography>
+            <Typography variant='h4' color='primary'>
+              Material-UI Version
+            </Typography>
           </HeaderTitleLogo>
           <NavWrap>
             <DesktopNavigation className='hide-on-mobile' />
