@@ -5,6 +5,7 @@ const buildCollection = language => {
     name: `articles-${language}`,
     label: `Articles (${language})`,
     folder: `resources/content/articles/${language}`,
+    slug: `{{slug}}-${language}`,
     create: true,
     delete: true,
     fields: [
