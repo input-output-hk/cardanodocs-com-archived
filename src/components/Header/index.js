@@ -17,6 +17,8 @@ const Header = styled.header`
 `
 
 const NavWrap = styled.div`
+  display: flex;
+  justify-content: space-around;
   flex: 3;
 `
 
