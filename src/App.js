@@ -1,8 +1,13 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Provider as ReactGridProvider } from '@input-output-hk/react-grid'
-import { ThemeProvider, ThemeConsumer, LanguageProvider, PageLoaderProvider, ScreenSizeProvider } from './state'
-import PickerContainer from './components/PickerContainer'
+import {
+  ThemeProvider,
+  ThemeConsumer,
+  LanguageProvider,
+  PageLoaderProvider,
+  ScreenSizeProvider
+} from './state'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import GlobalStyles from './GlobalStyles'
@@ -25,7 +30,6 @@ const App = ({ element }) => (
               <LanguageProvider>
                 <PageLoaderProvider>
                   <Fragment>
-                    <PickerContainer />
                     <Header />
                     {element}
                     <Footer />

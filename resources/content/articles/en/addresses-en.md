@@ -4,8 +4,7 @@ parent: cardano-overview
 order: 4
 ---
 
-ADDRESSES IN CARDANO SL
-=======================
+## ADDRESSES IN CARDANO SL
 
 To send and receive value, addresses are used in virtually all cryptocurrencies. Cardano SL supports 3 main types of addresses:
 
@@ -22,7 +21,6 @@ Redeem address is a special type of address for ADA redemption. Read more about 
 Moreover, Cardano SL support `Unknown` address type as well. This type will allow us to use custom types of addresses in the future.
 
 [](https://cardanodocs.com/cardano/addresses/#what-does-an-address-look-like)WHAT DOES AN ADDRESS LOOK LIKE?
-------------------------------------------------------------------------------------------------------------
 
 Addresses are `base58`-encoded bytestrings, for example:
 
@@ -43,7 +41,6 @@ Ae2tdPwUPEZKmwoy3AU3cXb5Chnasj6mvVNxV1H11997q3VW5ihbSfQwGpm
 It avoids both non-alphanumeric characters and letters which might look ambiguous when printed (`0`, `O`, `I`, `l`); therefore it is suitable for human users who enter the data manually, copying it from some visual source, and also allows easy copy and paste by double-clicking which usually selects the whole string.
 
 [](https://cardanodocs.com/cardano/addresses/#public-key-addresses)PUBLIC KEY ADDRESSES
----------------------------------------------------------------------------------------
 
 As mentioned in the [Introduction](https://cardanodocs.com/introduction/#you-own-your-money), the wallets you can see in the user interface are a convenient representation of the fact that you own a secret key to spend money in this particular wallet. But how is such spending verified by the network and how can you receive money from others? The answer is that along with the secret key which is used to control the value in your wallets, a public key is generated. This public component can be known by anybody, hence the name.
 
@@ -52,7 +49,6 @@ A public key address contains the hash of this public key.
 Public keys are also used for verifying your identity when you create a transaction and other auxiliary purposes.
 
 [](https://cardanodocs.com/cardano/addresses/#pay-to-script-hash)PAY TO SCRIPT HASH
------------------------------------------------------------------------------------
 
 The idea of Pay to Script Hash (P2SH) is to provide a lot of flexibility for formulating complex rules for spending money. Instead of sending a transaction to a public key address, we create a validator script that can take a so-called redemption script as a parameter. To redeem funds, we pass the redemption script to the validator and evaluate it. If it evaluates to `success`, money is sent as specified by the redeemer. Otherwise nothing happens.
 
@@ -61,17 +57,14 @@ To quote Bitcoin Wiki,
 > Using P2SH, you can send bitcoins to an address that is secured in various unusual ways without knowing anything about the details of how the security is set up. The recipient might need the signatures of several people to spend these bitcoins, or a password might be required, or the requirements could be completely unique.
 
 [](https://cardanodocs.com/cardano/addresses/#redeem-addresses)REDEEM ADDRESSES
--------------------------------------------------------------------------------
 
 Redeem addresses are Pay To PubKey Hash (P2PKH). Such an address contains the hash of redeem public key, and this key is actually [Ed25519](https://ed25519.cr.yp.to/) public key.
 
 [](https://cardanodocs.com/cardano/addresses/#other-address-types)OTHER ADDRESS TYPES
--------------------------------------------------------------------------------------
 
 In the future, we may use the update system to introduce other address types. Please [see more](https://cardanodocs.com/cardano/update-mechanism/#soft-fork-updates) on extending the system in non-breaking fashion.
 
 [](https://cardanodocs.com/cardano/addresses/#address-structure)ADDRESS STRUCTURE
----------------------------------------------------------------------------------
 
 Address consists of 3 parts:
 

@@ -5,7 +5,7 @@ order: 1
 redirects:
   - /technical/protocols/csl-application-level/
 ---
-# CSL Application-Level Messaging
+## CSL Application-Level Messaging
 
 In this chapter we explore messaging in Cardano SL. The goal of this chapter
 is to explain how all the pieces, such as Time-Warp, Network-Transport, and
@@ -229,7 +229,7 @@ Plea see [`sendUpdateProposal`](https://github.com/input-output-hk/cardano-sl/bl
 and [`sendVote`](https://github.com/input-output-hk/cardano-sl/blob/83fbebb3eec16c30a96c499301250c5a3756c0c1/src/Pos/Communication/Methods.hs#L40)
 functions for more details.
 
-# Workers, Listeners and Handlers
+## Workers, Listeners and Handlers
 
 You can think about them as «operating personnel» for messages.
 

@@ -4,20 +4,17 @@ parent: cardano-overview
 order: 2
 ---
 
-OUROBOROS PROOF OF STAKE ALGORITHM
-==================================
+## OUROBOROS PROOF OF STAKE ALGORITHM
 
 The Ouroboros Proof of Stake (PoS) Algorithm is the most important part of the protocol. It defines the way in which nodes reach consensus about the state of [ledger](https://cardanodocs.com/glossary/#ledger).
 
 Ouroboros is unique as the first proof-of-stake blockchain protocol based on formal, peer-reviewed academic research.
 
 [](https://cardanodocs.com/cardano/proof-of-stake/#why-proof-of-stake)WHY PROOF OF STAKE?
------------------------------------------------------------------------------------------
 
 The most important thing about picking a Proof of Stake (PoS) algorithm over a Proof of Work (PoW) algorithm (as adopted by Bitcoin), is the energy consumption considerations. Running the bitcoin protocol is a very expensive endeavor which uses large amounts of energy. It is estimated that 3.8 American households can be powered for a day by the energy that is spent to generate one bitcoin transaction. These energy requirements for running the bitcoin protocol continue to grow as more and more bitcoin miners sink money into mining. In addition, more energy is needed as the difficulty of the problems that their computers or mining rigs, encounter increases. This is why researchers have investigated alternative ways to reach consensus --- such as using the so-called BFT (Byzantine Fault Tolerant), consensus algorithms and PoS algorithms.
 
 [](https://cardanodocs.com/cardano/proof-of-stake/#what-is-proof-of-stake)WHAT IS PROOF OF STAKE?
--------------------------------------------------------------------------------------------------
 
 Proof of Stake is a novel approach to block generation. The core idea of Proof of Stake is that instead of wasting electricity on cracking computationally heavy problems, a node is selected to generate (or "mint") a new block with a probability proportional to the amount of coins this node has. If a node has positive (> 0) stake, it is called a "stakeholder". If a node eventually becomes chosen to mint a new block, it is called a "slot leader".
 
@@ -30,14 +27,12 @@ The "proof" part of "proof of stake" refers to evidence that blocks of transacti
 While "stake" means "the relative value held by addresses on the node". By "relative value" we mean "all the total value held by wallets on a particular node divided by the total value in the Cardano SL system". For more information, please see: [Balance and Stake in Cardano SL](https://cardanodocs.com/cardano/balance-and-stake/)
 
 [](https://cardanodocs.com/cardano/proof-of-stake/#about-slot-leaders)ABOUT SLOT LEADERS
-----------------------------------------------------------------------------------------
 
 Nodes with a positive stake are called stakeholders, and only stakeholders may participate in running the protocol. Moreover, to be able to generate new blocks for the blockchain, a stakeholder must be elected as a slot leader. The slot leader can listen to transactions announced by other nodes, make a block of those transactions, sign this block with its secret key and publish it to the network.
 
 You can think of a slot leader as a miner in bitcoin, but the above-mentioned consensus defines who will be able to mine, when and how much.
 
 [](https://cardanodocs.com/cardano/proof-of-stake/#epochs-and-slots)EPOCHS AND SLOTS
-------------------------------------------------------------------------------------
 
 The Ouroboros protocol divides the physical time into **epochs**, and each epoch is divided into **slots**. For example:
 
@@ -82,7 +77,6 @@ If slot leader missed their slot (for example, when offline), the right to produ
 **Note:** One or more slots can remain empty (without generated blocks), but the majority of blocks (at least 50% + 1) **must** be generated during an epoch.
 
 [](https://cardanodocs.com/cardano/proof-of-stake/#how-slot-leaders-elections-work)HOW SLOT LEADERS ELECTIONS WORK
-------------------------------------------------------------------------------------------------------------------
 
 Slot leaders are elected from the group of all stakeholders. Please note that not all stakeholders participate in this election, but only ones who have enough stake (for example, 2% of the total stake). This group of stakeholders are known as "electors".
 
@@ -140,6 +134,5 @@ To explain how a slot leader gets selected, think of the smallest, atomic piece 
 The reason why it is called "Follow the Satoshi" is that in bitcoin, an atomic piece of currency is called "Satoshi", honoring Satoshi Nakamoto, the creator of bitcoin.
 
 [](https://cardanodocs.com/cardano/proof-of-stake/#honest-majority)HONEST MAJORITY
-----------------------------------------------------------------------------------
 
 The fundamental assumption of a protocol is known as **honest majority**. This means that participants owning at least 50% + 1 of the total stake are honest ones. In this case we can **prove** that adversaries cannot break *persistence* and *liveness* of the blockchain. For more information see the [paper](https://cardanodocs.com/glossary/#paper) (pages 2 and 3).

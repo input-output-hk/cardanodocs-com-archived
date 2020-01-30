@@ -5,8 +5,22 @@ import Query from './Query'
 import PropTypes from 'prop-types'
 import Link from '../Link'
 import { MdMenu, MdClose } from 'react-icons/md'
-import { addEventListener, removeEventListener, getScrollOffset, scrollTo } from '../../helpers/dom'
+import {
+  addEventListener,
+  removeEventListener,
+  getScrollOffset,
+  scrollTo
+} from '../../helpers/dom'
 import { InputNavbar } from '../Search'
+import PickerContainer from '../PickerContainer'
+
+const MobilePicker = styled.div`
+  > div {
+    position: static;
+    right: unset;
+    transform: translateX(0);
+  }
+`
 
 const Container = styled.div`
   position: absolute;
@@ -14,15 +28,19 @@ const Container = styled.div`
   z-index: 4;
   left: 0;
   top: 0;
-  
+
   .toggle-menu {
     position: absolute;
     z-index: 5;
-    top: 1rem;
+    top: 2rem;
     right: 1rem;
     height: 3.2rem;
     color: ${({ theme }) => theme.colors.interactive};
     font-size: 3.4rem;
+  }
+
+  @media (min-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
+    display: none;
   }
 `
 
@@ -66,7 +84,7 @@ const Nav = styled.nav`
       &:hover,
       &.active,
       &:focus {
-        color: ${({ theme }) => theme.colors.text}
+        color: ${({ theme }) => theme.colors.text};
       }
     }
   }
@@ -91,8 +109,8 @@ const Nav = styled.nav`
 `
 
 const MobileNavigation = ({ className }) => {
-  const [ scrollPosition, setScrollPosition ] = useState(getScrollOffset())
-  const [ mobileNavVisible, setMobileNavVisible ] = useState(false)
+  const [scrollPosition, setScrollPosition] = useState(getScrollOffset())
+  const [mobileNavVisible, setMobileNavVisible] = useState(false)
 
   const toggleMobileNav = e => {
     e.preventDefault()
@@ -125,18 +143,20 @@ const MobileNavigation = ({ className }) => {
     return () => {
       removeEventListeners()
     }
-  }, [ mobileNavVisible ])
+  }, [mobileNavVisible])
 
   return (
     <Container className={`text-align-center ${className}`}>
       <Query
-        render={(items) => (
+        render={items => (
           <Fragment>
             <Link
               href='/'
               onClick={toggleMobileNav}
               className='toggle-menu'
-              tracking={{ label: `mobile_navigation_${mobileNavVisible ? 'close' : 'open'}` }}
+              tracking={{
+                label: `mobile_navigation_${mobileNavVisible ? 'close' : 'open'}`
+              }}
             >
               {!mobileNavVisible && <MdMenu />}
               {mobileNavVisible && <MdClose />}
@@ -146,16 +166,18 @@ const MobileNavigation = ({ className }) => {
               transitionEnterTimeout={500}
               transitionLeaveTimeout={350}
             >
-              { mobileNavVisible &&
+              {mobileNavVisible && (
                 <Nav key='nav' className='text-transform-uppercase'>
                   <ul>
-                    {items.map((item) => (
+                    {items.map(item => (
                       <li>
                         <Link
                           href={item.path}
                           onClick={closeNav}
                           activeClassName='active'
-                          tracking={{ label: `desktop_navigation_${item.path}` }}
+                          tracking={{
+                            label: `desktop_navigation_${item.path}`
+                          }}
                           title={item.label}
                         >
                           {item.label}
@@ -165,9 +187,14 @@ const MobileNavigation = ({ className }) => {
                     <li className='search-input'>
                       <InputNavbar />
                     </li>
+                    <li>
+                      <MobilePicker>
+                        <PickerContainer />
+                      </MobilePicker>
+                    </li>
                   </ul>
                 </Nav>
-              }
+              )}
             </ReactCSSTransitionGroup>
           </Fragment>
         )}

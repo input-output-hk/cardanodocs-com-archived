@@ -5,7 +5,6 @@ order: 3
 ---
 
 [](https://cardanodocs.com/installation/#supported-platforms)SUPPORTED PLATFORMS
---------------------------------------------------------------------------------
 
 Supported platforms are Windows, macOS and Linux. There are [installers for Windows and macOS](https://daedaluswallet.io/#download), which include a main node and [Daedalus wallet](https://github.com/input-output-hk/daedalus).
 

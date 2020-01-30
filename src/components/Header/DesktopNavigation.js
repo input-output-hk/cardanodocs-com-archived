@@ -7,7 +7,14 @@ import PropTypes from 'prop-types'
 import { getURIPathWithoutLang } from '../../helpers/url'
 import { LanguageConsumer } from '../../state'
 
-const Container = styled.div``
+const Container = styled.div`
+  flex: 2;
+  display: flex;
+  justify-content: flex-end;
+  @media (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
+    flex: 1 100%;
+  }
+`
 
 const Nav = styled.nav`
   a {
@@ -51,7 +58,7 @@ const isActive = (lang, href) => {
 const DesktopNavigation = ({ className }) => (
   <LanguageConsumer>
     {({ lang }) => (
-      <Container className={`text-align-left ${className}`}>
+      <Container className={`${className}`}>
         <Query
           render={items => (
             <Nav className='text-transform-uppercase'>
