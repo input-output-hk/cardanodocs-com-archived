@@ -7,7 +7,6 @@ const Code = (props) => (
   <ThemeConsumer>
     {({ theme }) => (
       <div>
-        {console.log(theme.codeTheme)}
         <SyntaxHighlighter language={props.language} style={theme.codeTheme} customStyle={{ padding: '2rem', borderRadius: '0.8rem' }}>
           {props.value}
         </SyntaxHighlighter>

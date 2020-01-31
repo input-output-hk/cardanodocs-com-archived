@@ -1,9 +1,9 @@
 ---
 title: En (English) footer content
-product_info: Lorem ipsum
+product_info: More about Cardano
 product_links:
-  - href: 'https://cardanoexplorer.com/'
-    label: Blockchain Explorer
+  - href: 'https://shelleyexplorer.cardano.org'
+    label: Shelley Explorer
   - href: 'https://cardanofoundation.org/'
     label: Cardano Foundation
   - href: 'https://cardanodocs.com/introduction/'
@@ -17,9 +17,9 @@ product_links:
 community_info: Join the community
 community_email: info+en@cardano.org
 community_links:
-  - href: '#'
+  - href: 'https://cardano.org'
     label: Cardano Community
-  - href: '#'
+  - href: 'https://t.me/CardanoAnnouncements/'
     label: Cardano Chat
   - href: 'https://forum.cardano.org/'
     label: Cardano Forum
@@ -30,7 +30,11 @@ community_links:
   - href: 'https://twitter.com/cardanostiftung'
     label: Cardano Foundation Twitter
 content_body: |
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor nec feugiat nisl pretium fusce id velit ut tortor. Pellentesque pulvinar pellentesque habitant morbi. Rhoncus mattis rhoncus urna neque. Viverra suspendisse potenti nullam ac tortor vitae purus. Viverra vitae congue eu consequat ac felis. Suspendisse sed nisi lacus sed viverra. Viverra justo nec ultrices dui sapien eget mi. Natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Eget mi proin sed libero. Nec tincidunt praesent semper feugiat. Euismod in pellentesque massa placerat duis ultricies lacus. Convallis posuere morbi leo urna molestie at elementum eu facilisis. Tortor at auctor urna nunc id. Malesuada fames ac turpis egestas. Odio morbi quis commodo odio aenean. Malesuada fames ac turpis egestas sed tempus urna et. Eu lobortis elementum nibh tellus molestie nunc non. Aliquet bibendum enim facilisis gravida neque convallis a cras semper. Massa vitae tortor condimentum lacinia quis vel eros donec. Nam libero justo laoreet sit amet cursus sit. Vulputate enim nulla aliquet porttitor lacus luctus. Fermentum leo vel orci porta non.
+  CARDANO IS AN [OPEN SOURCE](https://opensource.org/) PROJECT.
 
-  _Gravida quis blandit turpis cursus in hac habitasse platea. Dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo. Lectus magna fringilla urna porttitor rhoncus dolor. Donec et odio pellentesque diam._
+  Cardano is a software platform ONLY and does not conduct any independent diligence on, or substantive review of, any blockchain asset, digital currency, cryptocurrency or associated funds. You are fully and solely responsible for evaluating your investments, for determining whether you will exchange blockchain assets based on your own judgment, and for all your decisions as to whether to exchange blockchain assets with Cardano. In many cases, blockchain assets you exchange on the basis of your research may not increase in value, and may decrease in value. Similarly, blockchain assets you exchange on the basis of your research may fall or rise in value after your exchange.
+
+  Past performance is not indicative of future results. Any investment in blockchain assets involves the risk of loss of part or all of your investment. The value of the blockchain assets you exchange is subject to market and other investment risks.
+
+  [Incentivized Testnet Terms of Use](https://static.iohk.io/docs/testnet/TermsofUse-IOHKIncentivizedTestnet-EN.pdf)
 ---

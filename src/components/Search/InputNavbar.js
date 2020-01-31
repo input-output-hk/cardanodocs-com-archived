@@ -54,15 +54,6 @@ const Submit = styled.button`
   font-weight: 600;
   border-radius: 0 1.9rem 1.9rem 0;
   position: relative;
-
-  @media screen and (max-width: ${({ theme }) => theme.dimensions.screenSizes.small}px) {
-    border-radius: 1.9rem;
-    display: block;
-    margin: 0 auto;
-    width: auto;
-    min-width: 20rem;
-    padding: 0 1rem;
-  }
 `
 
 export default class SearchField extends React.Component {

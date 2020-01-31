@@ -27,6 +27,11 @@ const ContentWrap = styled.main`
 
 const SearchWrap = styled.aside`
   padding: 4rem 3rem 3rem 0;
+  @media(max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
+    display:flex;
+    justify-content:center;
+    padding:3rem 0;
+  }
 `
 
 const Article = ({ pageContext }) => {

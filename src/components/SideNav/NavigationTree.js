@@ -5,7 +5,10 @@ import Link from '../Link'
 
 const Nav = styled.ul`
   list-style: none;
-  padding: 0 3rem 0 0;
+  margin:0;
+  li {
+    padding: 2rem 0;
+  }
   p {
     font-weight:600;
   }

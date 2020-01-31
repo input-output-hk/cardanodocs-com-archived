@@ -7,6 +7,7 @@ import FullWidthSection from '../FullWidthSection'
 import { Input } from '../Search'
 import { LanguageConsumer } from '../../state'
 import { getSearch } from '../../helpers/url'
+import { navigate } from 'gatsby'
 
 const Wrapper = styled.div`
 padding:4rem 0;
@@ -79,11 +80,10 @@ export default class Results extends React.Component {
     this.setState({ searching: e.target.value })
   }
 
-  // onSubmit = (e) => {
-  //   console.log(e)
-  //   e.preventDefault()
-  //   navigate('/search/?=' + e.target.value)
-  // }
+  onSubmit = (e) => {
+    e.preventDefault()
+    navigate('/search/?=' + e.target.value)
+  }
 
   getSearchSpan = (content, match, trim) => {
     const regex = /(<([^>]+)>)/ig
@@ -96,15 +96,15 @@ export default class Results extends React.Component {
         const trimStart = (found > trim)
         const trimEnd = (found + match.length + trim < content.length)
         out =
-        content.substring((trimStart) ? found - trim : 0, found) +
-        '<span>' + content.substring(found, found + match.length) + '</span>' +
-        content.substring(found + match.length, (trimEnd) ? (found + match.length + trim) : content.length)
+          content.substring((trimStart) ? found - trim : 0, found) +
+          '<span>' + content.substring(found, found + match.length) + '</span>' +
+          content.substring(found + match.length, (trimEnd) ? (found + match.length + trim) : content.length)
         out = ((trimStart) ? '...' : '') + out + ((trimEnd) ? '...' : '')
       } else {
         out =
-        content.substring(0, found) +
-        '<span>' + content.substring(found, found + match.length) + '</span>' +
-        content.substring(found + match.length, content.length)
+          content.substring(0, found) +
+          '<span>' + content.substring(found, found + match.length) + '</span>' +
+          content.substring(found + match.length, content.length)
       }
     }
     return out
@@ -157,7 +157,7 @@ export default class Results extends React.Component {
                               <Link href={this.getLink(item.relativePath, lang)}>
                                 {(item.result && item.result.title)
                                   ? <span dangerouslySetInnerHTML={{ __html: item.result.title }} />
-                                  : <span>{item.childMarkdownRemark.frontmatter.title }</span>
+                                  : <span>{item.childMarkdownRemark.frontmatter.title}</span>
                                 }
                               </Link>
                             </strong>
