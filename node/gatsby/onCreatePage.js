@@ -17,7 +17,8 @@ module.exports = ({ page, actions }) => {
       const path = `/${lang}${page.path}`
       createPage({
         ...page,
-        path
+        path,
+        context: { lang }
       })
 
       addToSitemap(path)

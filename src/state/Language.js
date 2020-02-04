@@ -1,9 +1,8 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { navigate } from 'gatsby'
 import PropTypes from 'prop-types'
 import config from '../config'
 import * as moment from 'moment'
-import { getURIPath, getHash, languageSetInURL, isLanguageSupported } from '../helpers/url'
+import { getURIPath, languageSetInURL, isLanguageSupported } from '../helpers/url'
 import { getLocalStorageValue, setLocalStorageValue } from '../helpers/localStorage'
 import { getNavigatorLanguage } from '../helpers/navigator'
 import { autoCapture } from '../helpers/analytics'
@@ -53,7 +52,7 @@ const Provider = ({ children }) => {
     moment.locale(language)
     updateLang(language)
     if (lang !== language) autoCapture({ category: LANGUAGE, label: language, action: 'updated_language' })
-    navigate(`/${pathParts.join('/')}${getHash()}`)
+    // navigate(`/${pathParts.join('/')}${getHash()}`)
   }
 
   useEffect(() => {

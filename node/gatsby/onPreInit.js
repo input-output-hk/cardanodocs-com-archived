@@ -7,7 +7,7 @@ const fm = require('front-matter')
 const setupEnvironment = ({ program }) => {
   if (!process.env.GATSBY_URL) {
     // https://www.netlify.com/docs/continuous-deployment/#environment-variables
-    if (process.env.CONTEXT && [ 'production', 'deploy-preview', 'branch-deploy' ].includes(process.env.CONTEXT)) {
+    if (process.env.CONTEXT && ['production', 'deploy-preview', 'branch-deploy'].includes(process.env.CONTEXT)) {
       process.env.GATSBY_URL = process.env.DEPLOY_URL.replace(/\/$/, '')
     } else if (process.env.NODE_ENV === 'development') {
       process.env.GATSBY_URL = `http://${program.host}:${program.port}`
@@ -19,7 +19,7 @@ const setupEnvironment = ({ program }) => {
   }
 }
 
-const buildArticles = (markdownArticles, { key } = {}) => {
+const buildArticles = (markdownArticles, { key, baseURL = '/' } = {}) => {
   const articles = []
   let filteredArticles
   if (!key) {
@@ -33,9 +33,10 @@ const buildArticles = (markdownArticles, { key } = {}) => {
       title: content.attributes.title,
       content: content.body,
       key,
+      path: `${baseURL}${key}/`,
       order: content.attributes.order || 1,
       redirects: content.attributes.redirects,
-      children: buildArticles(markdownArticles, { key })
+      children: buildArticles(markdownArticles, { key, baseURL: `${baseURL}${key}/` })
     })
   })
 

@@ -7,7 +7,7 @@ module.exports = ({ actions }) => {
 
   function findNextLink (children, basePath) {
     let path
-    const childrenValues = [ ...children ]
+    const childrenValues = [...children]
     while (!path && childrenValues.length > 0) {
       const next = childrenValues.shift()
       if (next.content) {
@@ -56,5 +56,35 @@ module.exports = ({ actions }) => {
         .update(JSON.stringify(articles))
         .digest(`hex`)
     }
+  })
+
+  function createArticleNodes (articles, lang) {
+    articles.forEach(article => {
+      createNode({
+        path: article.path,
+        id: `document-id-${article.path}-${lang}`,
+        content: article.content,
+        title: article.title,
+        lang,
+        parent: null,
+        children: [],
+        internal: {
+          type: 'CardanoDocumentationArticle',
+          description: 'Cardano Documentation article',
+          contentDigest: crypto
+            .createHash(`md5`)
+            .update(JSON.stringify({ ...article, lang }))
+            .digest(`hex`)
+        }
+      })
+
+      if (article.children.length > 0) {
+        createArticleNodes(article.children, lang)
+      }
+    })
+  }
+
+  Object.keys(articles).forEach(lang => {
+    createArticleNodes(articles[lang], lang)
   })
 }

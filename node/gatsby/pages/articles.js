@@ -18,10 +18,9 @@ function getContext (article) {
 module.exports = ({ createPage }) => {
   const articleTemplate = path.join(__dirname, '../../../src/templates/Article.js')
   const redirectTemplate = path.join(__dirname, '../../../src/templates/Redirect.js')
-  function createChildPages (lang, articles, { context = null, basePath = '/', rootCreated = false } = {}) {
+  function createChildPages (lang, articles, { context = null, rootCreated = false } = {}) {
     articles.forEach((article) => {
       const navigationContext = context || cleanNavigationContext(getContext(article))
-      const path = `${basePath}${article.key}/`
 
       if (article.content) {
         if (!rootCreated) {
@@ -34,10 +33,18 @@ module.exports = ({ createPage }) => {
             }
           })
 
+          createPage({
+            path: `/${lang}${article.path}`,
+            component: redirectTemplate,
+            context: {
+              to: `/${lang}/`
+            }
+          })
+
           rootCreated = true
         } else {
           createPage({
-            path: `/${lang}${path}`,
+            path: `/${lang}${article.path}`,
             component: articleTemplate,
             context: {
               navigationContext,
@@ -59,7 +66,7 @@ module.exports = ({ createPage }) => {
         }
       }
 
-      if (article.children.length > 0) createChildPages(lang, article.children, { context: navigationContext, basePath: path, rootCreated })
+      if (article.children.length > 0) createChildPages(lang, article.children, { context: navigationContext, rootCreated })
     })
   }
 
