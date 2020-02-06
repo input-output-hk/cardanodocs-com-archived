@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 export const query = graphql`
   query($lang:String) {
-    allCardanoDocumentationArticle(filter: {lang: {eq: $lang}}) {
+    allCardanoDocsArticle(filter: {lang: {eq: $lang}}) {
       edges {
         node {
           title
@@ -18,7 +18,7 @@ export const query = graphql`
 `
 
 const SearchPage = ({ data, pageContext }) => (
-  <div>Total documentation articles for {pageContext.lang} - {data.allCardanoDocumentationArticle.edges.length}</div>
+  <div>Total documentation articles for {pageContext.lang} - {data.allCardanoDocsArticle.edges.length}</div>
 )
 
 SearchPage.propTypes = {

@@ -69,8 +69,8 @@ module.exports = ({ actions }) => {
         parent: null,
         children: [],
         internal: {
-          type: 'CardanoDocumentationArticle',
-          description: 'Cardano Documentation article',
+          type: 'CardanoDocsArticle',
+          description: 'Cardano Docs article',
           contentDigest: crypto
             .createHash(`md5`)
             .update(JSON.stringify({ ...article, lang }))
