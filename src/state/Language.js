@@ -7,6 +7,7 @@ import { getLocalStorageValue, setLocalStorageValue } from '../helpers/localStor
 import { getNavigatorLanguage } from '../helpers/navigator'
 import { autoCapture } from '../helpers/analytics'
 import { LANGUAGE } from '../constants/analytics'
+import { navigate } from 'gatsby'
 
 const LanguageContext = createContext()
 const Consumer = LanguageContext.Consumer
@@ -39,7 +40,7 @@ const resolveLanguage = (lang) => {
 
 const Provider = ({ children }) => {
   const [ lang, updateLang ] = useState(resolveLanguage(getDefaultLanguage()))
-  const setLang = language => {
+  const setLang = (language, redirect = true) => {
     if (!config.availableLanguages[language]) throw new Error(`Invalid language ${language}`)
     const pathParts = getURIPath().split('/').splice(1)
     if (languageSetInURL()) {
@@ -52,11 +53,11 @@ const Provider = ({ children }) => {
     moment.locale(language)
     updateLang(language)
     if (lang !== language) autoCapture({ category: LANGUAGE, label: language, action: 'updated_language' })
-    // navigate(`/${pathParts.join('/')}${getHash()}`)
+    if (redirect) navigate(`/${language}/`)
   }
 
   useEffect(() => {
-    setLang(lang)
+    setLang(lang, false)
   }, [])
 
   return (

@@ -63,7 +63,7 @@ const DesktopNavigation = ({ className }) => (
           render={items => (
             <Nav className='text-transform-uppercase'>
               <ul>
-                {items.slice(1).map(item => (
+                {items.map(item => (
                   <li key={item.path} className={isActive(lang, item.path)}>
                     <Link
                       href={item.path}
