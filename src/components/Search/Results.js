@@ -1,47 +1,28 @@
 /* eslint-disable */
-import React, { Fragment, PropTypes } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Link from '../Link'
+import Button from '../Button'
 import { Helmet } from 'react-helmet'
 import showdown from 'showdown'
 import FullWidthSection from '../FullWidthSection'
-import { SearchField } from '../Search'
+import { SearchField, Result } from '../Search'
 import FlexSearch from 'flexsearch'
 import Highlighter from 'react-highlight-words'
 import Markdown from '../Markdown'
 
 const Wrapper = styled.div`
   padding: 0 0 6rem 0;
-  .content{
+  .content {
     margin-top:3rem;
     width:100%;
     border-left:0.1rem solid ${({ theme }) => theme.colors.subtleAccent};
     @media (min-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px){
       padding:3rem 0 0 3rem;
     }
-    .items{
+    .items {
       list-style-type:none;
-      .item+.item{
-        border-top:1px solid ${({ theme }) => theme.colors.subtleAccent};
-        padding:2rem 0;
-      }
-      .item{
-        margin:0 0 2rem;
-        .title{
-          font-size:1.6rem;
-          text-transform:uppercase;
-          span span{
-            background: ${({ theme }) => theme.colors.subtleAccent};
-          }
-        }
-        .body{
-          font-size:1.2rem;
-          line-height:1.7;
-          span{
-            background: ${({ theme }) => theme.colors.subtleAccent};
-          }
-        }
-      }
     }
   }
   .section-title{
@@ -76,23 +57,11 @@ const HeadingWrap = styled.div`
   }
 `
 
-export default class Results extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      results: null
-    }
-  }
+const Results = ({ query, onSearch, searchData }) => {
+  const [results, setResults] = useState(null)
+  const [ page, setPage ] = useState(0)
 
-  componentDidMount() {
-    this.loadResults()
-  }
-
-  componentDidUpdate (prevProps) {
-    if (prevProps.query !== this.props.query || !this.state.results) this.loadResults()
-  }
-
-  sanitizeContent (content) {
+  const sanitizeContent = (content) => {
     const converter = new showdown.Converter()
     const htmlContent = converter.makeHtml(content)
     const div = document.createElement('div')
@@ -100,9 +69,9 @@ export default class Results extends React.Component {
     return div.innerText
   }
 
-  loadResults = async () => {
+  const loadResults = async () => {
     try {
-      const posts = this.props.searchData
+      const posts = searchData
       console.log('posts', posts)
       const index = new FlexSearch({
         encode: 'icase',
@@ -119,102 +88,82 @@ export default class Results extends React.Component {
       })
       index.add(posts.map(post => ({
         ...post,
-        content: this.sanitizeContent(post.content)
+        content: sanitizeContent(post.content)
       })))
       console.log('index', index)
-      const results = index.search(this.props.query, {
+      const results = index.search(query, {
         sort: 'publishTimestampDiff'
       })
 
-      console.log({ results })
-      this.setState({ results })
-      console.log(this.state.results)
+      console.log('results index', { results })
+      setResults(results)
+      console.log('results state', results)
     } catch (err) {
       console.error('Error loading blog search results', err)
     }
   }
 
-  highlightMatch = (text, query, { indexes = [], limit = null, surroundingContext = false } = {}) => {
-    const startIndex = indexes[indexes.length - 1]
-    const remainingText = text.substring(startIndex === undefined ? 0 : (startIndex + query.length))
-    const matchIndex = remainingText.toLowerCase().indexOf(query.toLowerCase())
-    if (matchIndex < 0 && indexes.length === 0) {
-      return (surroundingContext && text.length > 200)
-        ? `${text.substring(0, 500)} ...`
-        : text
-    }
+  useEffect(() => {
+    loadResults()
+  }, [query])
 
-    if (matchIndex >= 0 && (!limit || indexes.length + 1 <= limit)) return this.highlightMatch(text, query, { indexes: [ ...indexes, startIndex === undefined ? matchIndex : (matchIndex + startIndex + query.length) ], limit, surroundingContext })
-
-    if (surroundingContext) {
-      return (
-        <Fragment>
-          {indexes.map(i => {
-            const startIndex = i - 200 + query.length
-            let endIndex = i + 300
-            if (startIndex < 0) endIndex += Math.abs(startIndex)
-            return (
-              <p key={`${text}_${query}_${i}`}>
-                {startIndex > 0 && '... '}{this.highlightMatch(text.substring(startIndex, endIndex), query)}{endIndex < text.length - query.length + 1 && ' ...'}
-              </p>
-            )
-          })}
-        </Fragment>
-      )
-    } else {
-      return (
-        <span>
-          {indexes.map((i, key) => (
-            <Fragment key={`${text}_${query}_${i}`}>
-              {text.substring(key === 0 ? 0 : indexes[key - 1] + query.length, i)}<strong>{text.substring(i, i + query.length)}</strong>
-            </Fragment>
-          ))}
-          {text.substring(indexes[indexes.length - 1] + query.length)}
-        </span>
-      )
-    }
-  }
-
-  render() {
-    return (
-      <FullWidthSection>
-        <Helmet title={`Searching - Cardano Documentation`} />
-        <Wrapper>
-          <HeadingWrap>
-            <h1 className='section-title'>Search</h1>
-            <SearchField initialValue={this.props.query} onSubmit={this.props.onSearch}/>
-          </HeadingWrap>
-          <div className='content'>
-            {this.state.results && this.state.results.length > 0 &&
+  return (
+    <FullWidthSection>
+      <Helmet title={`Searching - Cardano Documentation`} />
+      <Wrapper>
+        <HeadingWrap>
+          <h1 className='section-title'>Search</h1>
+          <SearchField initialValue={query} onSubmit={onSearch}/>
+        </HeadingWrap>
+        <div className='content'>
+          {results &&
+            <div>
+              <p>Showing {page * 10 + 1} - {Math.min(page * 10 + 10, results.length)} of {results.length} results.</p>
               <ul className='items'>
-                {this.state.results.map( (item, index) => (
-                  <li className='item' key={index}>
-                    <strong className='title'>
-                      <Link href={item.path}>
-                        { item.title && <span>{item.title}</span> }
-                      </Link>
-                    </strong>
-                    <div>
-                      <Link href={item.path}>
-                        <small>{item.path}</small>
-                      </Link>
-                    </div>
-                    <div className='body'>
-                      {this.highlightMatch(item.content, this.props.query, { surroundingContext: true, limit: 1 })}
-                    </div>
-                  </li>
+                {results.slice(page * 10, page * 10 + 10).map(post => (
+                  <Result key={post.id} result={post} query={query} />
                 ))}
               </ul>
-            }
-            {this.state.results && this.state.results.length === 0 &&
-              <div className='empty'><h2>No Results</h2><br /><br /><br /></div >
-            }
-            {!this.state.results &&
-              <p>Initial state</p>
-            }
-          </div>
-        </Wrapper>
-      </FullWidthSection>
-    )
-  }
+              <div>
+                <Button
+                  onClick={e => {
+                    e.preventDefault()
+                    if (page === 0) return
+                    setPage(page - 1)
+                  }}
+                  disabled={page === 0}
+                >
+                  Previous
+                </Button>
+                <Button
+                  onClick={e => {
+                    e.preventDefault()
+                    if (page > results.length % 10) return
+                    setPage(page + 1)
+                  }}
+                  disabled={page > results.length % 10}
+                >
+                  Next
+                </Button>
+              </div>
+            </div>
+          }
+          {results && results.length === 0 &&
+            <div className='empty'><h2>No matching results</h2><br /><br /><br /></div >
+          }
+          {!results &&
+            <p>Loading...</p>
+          }
+        </div>
+      </Wrapper>
+    </FullWidthSection>
+  )
 }
+
+Results.propTypes = {
+  query: PropTypes.string,
+  onSearch: PropTypes.func.isRequired,
+  searchData: PropTypes.arrayOf(PropTypes.object).isRequired
+}
+
+export default Results
