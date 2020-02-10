@@ -1,9 +1,9 @@
 import Input from './Input'
-import InputNavbar from './InputNavbar'
+import SearchField from './SearchField'
 import Results from './Results'
 
 export {
   Input,
-  InputNavbar,
+  SearchField,
   Results
 }

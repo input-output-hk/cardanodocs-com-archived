@@ -17,6 +17,15 @@ export const getHash = () => window.location.hash
 export const getHostname = () => window.location.hostname
 export const isActive = (path, lang) => getURIPathWithoutLang(lang).substring(0, path.length) === path
 
+export const getSearchParam = (search, key) => {
+  const params = (search || '').replace(/^\?/, '').split('&')
+  while (params.length > 0) {
+    const [ k, v ] = params.shift().split('=')
+    if (k === key) return decodeURIComponent(v)
+  }
+
+  return null
+}
 const getHashParams = () => {
   const currentHash = getHash().replace(/^#/, '')
   const params = currentHash.split('&').map(p => ({ [p.split('=')[0]]: p.split('=')[1] }))

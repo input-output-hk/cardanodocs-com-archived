@@ -1,8 +1,7 @@
-import React from 'react'
+/* eslint-disable */
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import { ThemeConsumer, LanguageConsumer } from '../../state'
 import { FiSearch } from 'react-icons/fi'
-import { navigate } from 'gatsby'
 
 const Form = styled.form`
   width: 100%;
@@ -56,45 +55,31 @@ const Submit = styled.button`
   position: relative;
 `
 
-export default class SearchField extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      searching: ''
-    }
-  }
+const SearchField = ({ initialValue = '', onSubmit }) => {
+  const [value, setValue] = useState(initialValue)
 
-  isSearching = (e) => {
+  const onFormSubmit = (e) => {
     e.preventDefault()
-    this.setState({ searching: e.target.value })
+    onSubmit(value)
   }
 
-  onSubmit = (value, lang) => {
-    navigate('/' + lang + '/search/?s=' + value)
-  }
-
-  render () {
-    return (
-      <LanguageConsumer>
-        {({ lang }) => (
-          <ThemeConsumer>
-            {({ theme }) => (
-              <Form
-                method='get'
-                onSubmit={e => {
-                  e.preventDefault()
-                  this.onSubmit(this.state.searching, lang)
-                }}
-              >
-                <Input type='text' name='s' placeholder='Search' value={this.state.searching} onChange={this.isSearching} />
-                <Submit type='submit'>
-                  <FiSearch />
-                </Submit>
-              </Form>
-            )}
-          </ThemeConsumer>
-        )}
-      </LanguageConsumer>
-    )
-  }
+  return (
+    <Form
+      method='get'
+      onSubmit={onFormSubmit}
+    >
+      <Input
+        type='text'
+        name='search-field'
+        placeholder='Search'
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <Submit type='submit'>
+        <FiSearch />
+      </Submit>
+    </Form>
+  )
 }
+
+export default SearchField
