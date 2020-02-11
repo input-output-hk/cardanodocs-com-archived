@@ -1,10 +1,10 @@
 ---
 # Netlify identifier
-title: En (English) Home page content
+title: CN (Chinese) Home page content
 content:
-  title: こんにちは Cardano Docs
-  subtitle: こんにちは Cardano Settlement Layer Documentation
-  description: こんにちは The purpose of this documentation is to provide you with understanding of the first layer of Cardano Platform stack, the Settlement Layer.
+  title: 文档 Docs
+  subtitle: 文档 Settlement Layer Documentation
+  description: 文档 The purpose of this documentation is to provide you with understanding of the first layer of Cardano Platform stack, the Settlement Layer.
 ---
 
 # こんにちは Mollit cillum reprehenderit

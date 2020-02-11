@@ -1,5 +1,5 @@
 ---
-title: Ja (Japanese) site content
+title: CN (Chinese) site content
 head:
   title: IOHK Gatsby Starter
   meta:
