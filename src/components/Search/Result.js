@@ -71,7 +71,7 @@ const Result = ({ result, query }) => {
   }
 
   return (
-    <ResultWrap className='item'>
+    <ResultWrap className='item' key={result.key}>
       <strong className='title'>
         <Link href={result.path}>
           { result.title && <span>{result.title}</span> }

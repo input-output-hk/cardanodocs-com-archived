@@ -56,6 +56,11 @@ const HeadingWrap = styled.div`
     }
   }
 `
+const NavWrap = styled.div`
+  width:100%;
+  display:flex;
+  justify-content:space-between;    
+`
 
 const Results = ({ query, onSearch, searchData }) => {
   const [results, setResults] = useState(null)
@@ -113,39 +118,49 @@ const Results = ({ query, onSearch, searchData }) => {
       <Wrapper>
         <HeadingWrap>
           <h1 className='section-title'>Search</h1>
-          <SearchField initialValue={query} onSubmit={onSearch}/>
+          <SearchField initialValue={query} onSubmit={(value, lang) => {
+            setPage(0)
+            onSearch(value, lang)
+          }}/>
         </HeadingWrap>
         <div className='content'>
           {results &&
             <div>
               <p>Showing {page * 10 + 1} - {Math.min(page * 10 + 10, results.length)} of {results.length} results.</p>
               <ul className='items'>
-                {results.slice(page * 10, page * 10 + 10).map(post => (
-                  <Result key={post.id} result={post} query={query} />
+                {results.slice(page * 10, page * 10 + 10).map((post, i) => (
+                  <Result key={`${i}`} result={post} query={query} />
                 ))}
               </ul>
-              <div>
-                <Button
-                  onClick={e => {
-                    e.preventDefault()
-                    if (page === 0) return
-                    setPage(page - 1)
-                  }}
-                  disabled={page === 0}
-                >
-                  Previous
-                </Button>
-                <Button
-                  onClick={e => {
-                    e.preventDefault()
-                    if (page > results.length % 10) return
-                    setPage(page + 1)
-                  }}
-                  disabled={page > results.length % 10}
-                >
-                  Next
-                </Button>
-              </div>
+              <NavWrap>
+                {console.log('page', page)}
+                {console.log(results.length)}
+                <div>
+                  {page > 0 &&
+                    <Button
+                      onClick={e => {
+                        e.preventDefault()
+                        if (page === 0) return
+                        setPage(page - 1)
+                      }}
+                    >
+                      Previous
+                    </Button>
+                  }
+                </div>
+                <div>
+                  {page < Math.floor(results.length / 10) && page * 10 + 10 < results.length &&
+                    <Button
+                      onClick={e => {
+                        e.preventDefault()
+                        setPage(page + 1)
+                      }}
+                    >
+                      Next
+                    </Button>
+                  }
+                </div> 
+              </NavWrap>
             </div>
           }
           {results && results.length === 0 &&
