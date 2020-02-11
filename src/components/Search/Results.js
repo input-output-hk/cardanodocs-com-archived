@@ -77,7 +77,6 @@ const Results = ({ query, onSearch, searchData }) => {
   const loadResults = async () => {
     try {
       const posts = searchData
-      console.log('posts', posts)
       const index = new FlexSearch({
         encode: 'icase',
         tokenize: 'strict',
@@ -95,14 +94,11 @@ const Results = ({ query, onSearch, searchData }) => {
         ...post,
         content: sanitizeContent(post.content)
       })))
-      console.log('index', index)
       const results = index.search(query, {
         sort: 'publishTimestampDiff'
       })
 
-      console.log('results index', { results })
       setResults(results)
-      console.log('results state', results)
     } catch (err) {
       console.error('Error loading blog search results', err)
     }
@@ -133,8 +129,6 @@ const Results = ({ query, onSearch, searchData }) => {
                 ))}
               </ul>
               <NavWrap>
-                {console.log('page', page)}
-                {console.log(results.length)}
                 <div>
                   {page > 0 &&
                     <Button
