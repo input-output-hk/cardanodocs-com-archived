@@ -25,11 +25,7 @@ export default {
       type: 'dark'
     },
     typography: {
-      fontFamily: [
-        'Open Sans',
-        'Arial',
-        'sans-serif'
-      ].join(','),
+      fontFamily: ['Open Sans', 'Arial', 'sans-serif'].join(','),
       fontSize: 14,
       htmlFontSize: 10,
       h1: {
@@ -64,9 +60,7 @@ export default {
         fontSize: '1.6rem',
         fontWeight: '700'
       },
-      body1: {
-
-      },
+      body1: {},
       body2: {
         fontSize: '1.4rem'
       }

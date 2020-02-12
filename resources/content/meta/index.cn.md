@@ -1,6 +1,6 @@
 ---
 # Netlify identifier
-title: Ja (Japanese) home page meta data
+title: CN (Chinese) home page meta data
 head:
   title: IOHK Gatsby Starter - ようこそ
   meta:

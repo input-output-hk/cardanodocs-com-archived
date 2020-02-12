@@ -4,24 +4,21 @@ import { ThemeConsumer } from '../../state'
 import Link from '../Link'
 
 const Wrap = styled.div`
-display:inline-block;
-text-transform:uppercase;
+  display: inline-block;
+  text-transform: uppercase;
 
-img,strong{
-  vertical-align:middle
-}
-img{
-  margin: 2rem 0 0 0;
-  width: 2.8rem;
-}
-strong{
-  display:inline-block;
-  padding: 2rem 0 0 1rem;
-  color: ${({ theme }) => theme.colors.heading};
-}
-/* @media screen and (min-width: ${({ theme }) => theme.dimensions.screenSizes.extraLarge}px) {
-  float:left;
-} */
+  img,
+  strong {
+    vertical-align: middle;
+  }
+  img {
+    width: 3.5rem;
+    margin: 0 2rem 0 0;
+  }
+  strong {
+    display: inline-block;
+    color: ${({ theme }) => theme.colors.heading};
+  }
 `
 
 const Logo = () => (

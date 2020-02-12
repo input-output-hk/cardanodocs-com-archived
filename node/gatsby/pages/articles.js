@@ -16,36 +16,21 @@ function getContext (article) {
 }
 
 module.exports = ({ createPage }) => {
-  let rootCreated = false
   const articleTemplate = path.join(__dirname, '../../../src/templates/Article.js')
   const redirectTemplate = path.join(__dirname, '../../../src/templates/Redirect.js')
-  function createChildPages (lang, articles, { context = null, basePath = '/' } = {}) {
+  function createChildPages (lang, articles, { context = null } = {}) {
     articles.forEach((article) => {
       const navigationContext = context || cleanNavigationContext(getContext(article))
-      const path = `${basePath}${article.key}/`
 
       if (article.content) {
-        if (!rootCreated) {
-          createPage({
-            path: `/${lang}/`,
-            component: articleTemplate,
-            context: {
-              navigationContext,
-              content: article.content
-            }
-          })
-
-          rootCreated = true
-        } else {
-          createPage({
-            path: `/${lang}${path}`,
-            component: articleTemplate,
-            context: {
-              navigationContext,
-              content: article.content
-            }
-          })
-        }
+        createPage({
+          path: `/${lang}${article.path}`,
+          component: articleTemplate,
+          context: {
+            navigationContext,
+            content: article.content
+          }
+        })
 
         if (article.redirects) {
           article.redirects.forEach((redirect) => {
@@ -60,12 +45,12 @@ module.exports = ({ createPage }) => {
         }
       }
 
-      if (article.children.length > 0) createChildPages(lang, article.children, { context: navigationContext, basePath: path })
+      if (article.children.length > 0) createChildPages(lang, article.children, { context: navigationContext })
     })
   }
 
   const articles = data.get('articles')
-  Object.keys(articles).forEach(lang => {
-    createChildPages(lang, articles[lang])
+  Object.keys(articles).forEach((lang, index) => {
+    createChildPages(lang, articles[lang], index === 0)
   })
 }

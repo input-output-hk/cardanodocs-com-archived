@@ -5,7 +5,7 @@ order: 2
 redirect:
   - /technical/
 ---
-# Cardano SL Technical Details
+## Cardano SL Technical Details
 
 This section is a starting point for developers who wish to contribute to the
 original client, as well as those who wish to undertake making their own client

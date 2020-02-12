@@ -5,8 +5,7 @@ order: 2
 redirects:
   - /technical/cli-options/
 ---
-Cardano SL CLI Options
-----------------------
+## Cardano SL CLI Options
 
 This guide describes all executable files that are used in Cardano SL and all corresponding CLI-options/parameters.
 

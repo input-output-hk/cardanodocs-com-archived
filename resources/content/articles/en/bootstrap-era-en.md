@@ -8,7 +8,6 @@ After the Cardano SL Testnet era and release of Cardano SL, the network will ope
 The Bootstrap era will lead to the [Reward era](https://cardanodocs.com/timeline/reward), during which updates to the protocol will be issued, and the major stakeholders will be provided with convenient options to run their nodes on personal servers in the cloud.
 
 [](https://cardanodocs.com/timeline/bootstrap/#stake-locking)STAKE LOCKING
---------------------------------------------------------------------------
 
 The Bootstrap era is the period of Cardano SL existence that allows only fixed predefined users to have control over the system. The set of such users (the bootstrap stakeholders) and propotion of total stake each of them controls is defined in genesis block.
 
