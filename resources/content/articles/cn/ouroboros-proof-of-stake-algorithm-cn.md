@@ -1,63 +1,66 @@
 ---
-title: Ouroboros Proof of Stake Algorithm
+title: 乌洛波罗斯权益证明算法
 parent: cardano-overview
 order: 2
 ---
 
-## OUROBOROS PROOF OF STAKE ALGORITHM
+## 乌洛波罗斯权益证明算法
 
-The Ouroboros Proof of Stake (PoS) Algorithm is the most important part of the protocol. It defines the way in which nodes reach consensus about the state of [ledger](https://cardanodocs.com/glossary/#ledger).
+乌洛波罗斯权益证明算法是协议中最重要的部分。它定义了节点达到[账本](/glossary/#ledger)一致性的方式。
 
-Ouroboros is unique as the first proof-of-stake blockchain protocol based on formal, peer-reviewed academic research.
+乌洛波洛斯是独一无二的，第一个基于形式化验证，以及同行评审的学术研究的权益证明区块链协议。
 
-[](https://cardanodocs.com/cardano/proof-of-stake/#why-proof-of-stake)WHY PROOF OF STAKE?
 
-The most important thing about picking a Proof of Stake (PoS) algorithm over a Proof of Work (PoW) algorithm (as adopted by Bitcoin), is the energy consumption considerations. Running the bitcoin protocol is a very expensive endeavor which uses large amounts of energy. It is estimated that 3.8 American households can be powered for a day by the energy that is spent to generate one bitcoin transaction. These energy requirements for running the bitcoin protocol continue to grow as more and more bitcoin miners sink money into mining. In addition, more energy is needed as the difficulty of the problems that their computers or mining rigs, encounter increases. This is why researchers have investigated alternative ways to reach consensus --- such as using the so-called BFT (Byzantine Fault Tolerant), consensus algorithms and PoS algorithms.
+## 为什么要有权益证明？
 
-[](https://cardanodocs.com/cardano/proof-of-stake/#what-is-proof-of-stake)WHAT IS PROOF OF STAKE?
+不选择被比特币采用的 PoW（工作量证明）而选择 PoS (权益证明) 最重要的原因是考虑了能源消耗。运行比特币协议非常消耗资源，据估计，一个比特币的转账所需要的能源是3.8个美国家庭一天消耗的能源。随着越来越多的比特币矿工将资金投入矿业，运行比特币协议的能源要求只会越来越高，他们挖矿的难度也会越来越大。这也是为什么研究人员尽力研究达成共识的替代算法，比如使用所谓的 BFT（Byzantine Fault Tolerant）一致性算法和 PoS 算法。
 
-Proof of Stake is a novel approach to block generation. The core idea of Proof of Stake is that instead of wasting electricity on cracking computationally heavy problems, a node is selected to generate (or "mint") a new block with a probability proportional to the amount of coins this node has. If a node has positive (> 0) stake, it is called a "stakeholder". If a node eventually becomes chosen to mint a new block, it is called a "slot leader".
+## 什么是权益证明算法
 
-### [](https://cardanodocs.com/cardano/proof-of-stake/#proof)PROOF
+权益证明是生成区块的新方法。权益证明的核心思想是，不要浪费电力来解决计算量大的问题，而是选择一个节点来产生（或『铸造』）一个新的区块，其概率与这个节点所拥有的币数量成正比。如果一个节点具有正数（>0）的股权，则被称为权益所有人。如果一个节点最终被选中来铸造新的区块，它被称为『slot 领导者』。
 
-The "proof" part of "proof of stake" refers to evidence that blocks of transactions are legitimate.
+### 证明
 
-### [](https://cardanodocs.com/cardano/proof-of-stake/#stake)STAKE
+『权益证明』的『证明』部分是指证明交易块是合法的。
 
-While "stake" means "the relative value held by addresses on the node". By "relative value" we mean "all the total value held by wallets on a particular node divided by the total value in the Cardano SL system". For more information, please see: [Balance and Stake in Cardano SL](https://cardanodocs.com/cardano/balance-and-stake/)
 
-[](https://cardanodocs.com/cardano/proof-of-stake/#about-slot-leaders)ABOUT SLOT LEADERS
+### 权益
 
-Nodes with a positive stake are called stakeholders, and only stakeholders may participate in running the protocol. Moreover, to be able to generate new blocks for the blockchain, a stakeholder must be elected as a slot leader. The slot leader can listen to transactions announced by other nodes, make a block of those transactions, sign this block with its secret key and publish it to the network.
+『权益』指的是节点上的地址所拥有的相对价值。『相对价值』指的是『卡尔达诺结算层系统中某个节点钱包上的价值除以总价值』。请阅读[卡尔达诺结算层的平衡和权益](/cardano/balance-and-stake/) 章节获取更多信息。
 
-You can think of a slot leader as a miner in bitcoin, but the above-mentioned consensus defines who will be able to mine, when and how much.
 
-[](https://cardanodocs.com/cardano/proof-of-stake/#epochs-and-slots)EPOCHS AND SLOTS
+## 关于 Slot 领导者
 
-The Ouroboros protocol divides the physical time into **epochs**, and each epoch is divided into **slots**. For example:
+有正资产的节点称作权益所有人，只有权益所有人能参与运行协议。权益所有人必须被选举为 slot 领导者才让区块链生成区块。Slot 领导者可能监听到其他节点的交易信息，然后通过密钥生成一个交易区块发给全网。
+
+你可以认为 slot 领导者是比特币中的矿工，但上述的一致性协议会确定谁，什么时候能挖矿，能挖到多少矿。
+
+## Epochs 和 Slots
+
+乌洛波罗斯协议将物理的时间划分为 **epochs**, 每一个 epoch 又划分为 **slots**:
 
 ```
 +----------+----------+-------+----------+--------------------> t
 |  slot 0  |  slot 1  |  ...  |  slot N  |
 
- \                                      /\
+ \                                      / \
   -------------- epoch M ---------------   -- epoch M+1 -- ...
-
 ```
 
-**Note:** a slot is a relatively short period of time (for example, 20 seconds).
 
-Each slot has one and only one leader (slot leader, SL):
+请注意 slot 是相对较短的一段时间（比如20秒）。
+
+每个 slot 有且只有一个领导者（slot leader，SL）：
 
 ```
 +----------+----------+-------+----------+----> t
 |  slot 0  |  slot 1  |  ...  |  slot N  |
 
     SL 0       SL 1               SL N
-
 ```
 
-The slot leader has a (sole) right to produce one and only one block during his slot:
+
+slot 领导者有权在他的 slot 内生成一个区块。
 
 ```
   +------+   +------+           +------+
@@ -67,72 +70,76 @@ The slot leader has a (sole) right to produce one and only one block during his 
 |  slot 0  |  slot 1  |  ...  |  slot N  |
 
     SL 0       SL 1               SL N
-
 ```
 
-It means that the number of slot leaders is strictly equal to the number of slots in epoch (let's call this number `N`), so it is impossible to produce more than `N` blocks during an epoch.
 
-If slot leader missed their slot (for example, when offline), the right to produce a block is lost until they are elected again.
+这意味着 slot 领导者的数量一定等于一个 epoch 内 slots 的数量（不妨设为 `N`)，因此不可能在一个 epoch 里面生成超过 `N` 个区块。
 
-**Note:** One or more slots can remain empty (without generated blocks), but the majority of blocks (at least 50% + 1) **must** be generated during an epoch.
+如果 slot 领导者错过了它的 slot（比如，在那个阶段它离线了），在下一次被选举为领导者之前，它没有权利再生成区块。
 
-[](https://cardanodocs.com/cardano/proof-of-stake/#how-slot-leaders-elections-work)HOW SLOT LEADERS ELECTIONS WORK
+**请注意：** 可以有一个或多个 slots 是空的（即，不生成区块），但在一个 epoch 期间，它必须生成大部分块（至少50%+1）。
 
-Slot leaders are elected from the group of all stakeholders. Please note that not all stakeholders participate in this election, but only ones who have enough stake (for example, 2% of the total stake). This group of stakeholders are known as "electors".
 
-Electors elect slot leaders for the next epoch during the current epoch. Thus, at the end of epoch `N` it is already known who are slot leaders for the epoch `N+1`, and it cannot be changed.
+## Slot 领导者选举是怎么工作的
 
-You can think of this election as a "fair lottery"; anyone from the group of stakeholders can become a slot leader. However, an important idea of PoS is that the more stake stakeholder has, the more chances one has to be elected as a slot leader.
+Slot 领导者从所有的权益所有人中选举。请注意并不是所有的权益所有人能参与这次选举，只有有足够多的权益（比如，总量的2%)才有资格。我们称这些权益所有人为『候选人』
 
-**Note:** One stakeholder can be elected as a slot leader for more than one slot during the same epoch.
+在 epoch 的选举中会选举一个 slot 领导者参与下一次 epoch。因此，在 epoch `N` 结束的时候，我们就能知道 epoch `N+1` 的 slot 领导者是谁，并且这是不可更改的。
 
-### [](https://cardanodocs.com/cardano/proof-of-stake/#multiparty-computation)MULTIPARTY COMPUTATION
+你可以把这样的选举当做 『公平抽签』：权益所有人中的任何一个都能成为 slot 领导者。但 PoS 中一个很重要的的思想是，权益所有人拥有的股份越多，它被选举为 slot 领导者的可能性也就越大。
 
-One of the fundamental problems of the slot leader election process is its unbiasedness. A certain degree of randomness is needed as a base for election, in this case, results of this election are random and fair. So the question is where can this randomness be obtained from?
+**请注意：**同一个 epoch，一个权益所有人可以被多次选做 slot 领导者。
 
-A multiparty computation (MPC) approach is used to achieve this randomness where each elector independently performs an action which is called "coin tossing" and after that shares results with other electors. The idea is that results are randomly generated by each elector, but eventually they agree on the same final value.
 
-#### [](https://cardanodocs.com/cardano/proof-of-stake/#commitment-phase)COMMITMENT PHASE
+### 多方计算
 
-First of all, an elector generates a secret (or special random value). Next, an elector forms a "commitment" which is a message that contains encrypted shares (see an explanation below) and proof of secret.
+选举过程的根本问题之一是无偏性。我们需要一些随机性作为选举的基础，这样的话，选举的结果是随机的，公平的，问题是，这个随机性从哪来？
 
-The next step is when an elector signs this commitment with its secret key, specifies the epoch's number and attaches its public key. In this case, everybody can check who created this commitment and which epoch this commitment relates to.
+多方计算（multiparty computation (MPC) ）方法用来实现这个随机性，每个参选人独立进行一次『投硬币』的行为，然后与其他参选人分享结果。这个想法就是：结果由每个参选人随机产生，但最终它们在相同的最终价值上达成一致。
 
-Subsequently, an elector sends its commitment to other electors, so eventually each elector collects commitments from all other electors.
+#### 提交阶段
 
-**Note:** these commitments are put into the block, that is, they become a part of the blockchain.
+首先，参选人会产生一个密钥（特殊的随机值）。接着，参选人会形成一个『提交』，这是一个包含加密份额（见下面的解释）以及密码的证明的消息。
 
-#### [](https://cardanodocs.com/cardano/proof-of-stake/#reveal-phase)REVEAL PHASE
+然后参选人会用密钥来签署这个提交，指定 epoch 编号，附上它的公钥。在这种情况下，每个人都可以知道谁创建了这个提交，以及这个提交属于哪个 epoch。
 
-The reveal phase is where an elector sends an "opening", or special value for opening a commitment. A commitment is like a locked box (with a secret in it), and the act of opening involves a key that opens the box retrieves the secret.
+随后，参选人会将其提交交给其他参选人，最终每个参选人都会拿到其他参选人的提交。
 
-**Note:** all openings are put into the block, that is, they become a part of the blockchain.
+注意：这些提交将被放入区块中，也就是说它们将成为区块链的一部分。
 
-#### [](https://cardanodocs.com/cardano/proof-of-stake/#recovery-phase)RECOVERY PHASE
 
-The final phase in the process is called the recovery phase.
+#### 开启阶段
 
-Eventually, an elector has both commitments and openings. Theoretically some electors can be an adversary and can publish its commitment but **not** publish its opening.
+在这个阶段参选人发送一个『开启』状态，这是一个打开提交的特殊值。一个提交就像一个锁着的盒子（里面有一个密钥），我们需要一个开启的钥匙来打开这个盒子，获取里面的密钥。
 
-In this case, the honest electors can post all shares (mentioned above) to reconstruct the secret. The idea is simple: an election finishes successfully even if some electors are adversaries.
+**注意：**所有的开启都将放入区块中，它们会变成区块链的一部分。
 
-Subsequently, an elector verifies that commitments and openings match, and if so, extracts the secrets from the commitments and forms a seed (randomly generated byte string) from these secrets. So all electors get the same seed, and it will be used for Follow the Satoshi (FTS) algorithm.
 
-### [](https://cardanodocs.com/cardano/proof-of-stake/#follow-the-satoshi)FOLLOW THE SATOSHI
+#### 恢复阶段
 
-At this moment, electors have the seed (randomness we need). Now they have to select a particular slot leaders for the next epoch. This is where the Follow the Satoshi (FTS) algorithm comes into effect:
+这是最后的阶段。
+
+最终，参选者既有提交，也有开启。从理论上来说，一些选民可以是对手。它可以公布它的提交，但**不**公开它的开启。
+
+在这种情况下，诚实的选民可以张贴（上面有提到）来重建密钥，这个想法很简单：即使某些选民是对手，选举也能成功结束。
+
+随后，参选者验证提交，开启匹配，如果成功，从提交中提取密钥，并从这些密钥中形成种子（随机生成的字符串）。所以所有的选民都会得到相同的种子，并且会被用于追随中本聪算法。
+
+### 追随中本聪
+
+在参选者获取种子之后（我们需要随机性），他们必须为下一个 epoch 选择特定的 slot 领导者。这时候就引入了追随中本聪算法。它类似于这样：
+
 
 ```
          +-----+
 SEED --->| FTS |---> ELECTED_SLOT_LEADERS
          +-----+
-
 ```
 
-To explain how a slot leader gets selected, think of the smallest, atomic piece of value as a coin called "[Lovelace](https://cardanodocs.com/glossary/#lovelace)". Fundamentally, the ledger produces the distribution of coins, and since slot leaders can only be selected from stakeholders distribution of stake. FTS is an algorithm that verifiably picks a coin, and when coin owned by stakeholder `S` selected, `S` become a slot leader. It is clear that the more coins `S` has, the higher the probability that one of his coins will be picked.
+我们解释一下 slot 领导者是怎么被选中的。我们将最小的，原子级的币叫做 『[Lovelace](/glossary/#lovelace)』。基本上，因为 slot 领导者只能从权益所有者中选择，账本会生成币的分发。FTS 是一个挑选币的可证算法，当权益所有人 `S` 的币被选中时，`S` 就成为一个 slot 领导者。很明显，`S` 的币越多，他的币被选中的几率也就越大。
 
-The reason why it is called "Follow the Satoshi" is that in bitcoin, an atomic piece of currency is called "Satoshi", honoring Satoshi Nakamoto, the creator of bitcoin.
+为什么它被称为『追随中本聪算法』是因为在比特币中，货币的最小单位被称为『聪』，这是为了表彰比特币的发明人中本聪（Satoshi Nakamoto）
 
-[](https://cardanodocs.com/cardano/proof-of-stake/#honest-majority)HONEST MAJORITY
+## 大多数都是诚实的
 
-The fundamental assumption of a protocol is known as **honest majority**. This means that participants owning at least 50% + 1 of the total stake are honest ones. In this case we can **prove** that adversaries cannot break *persistence* and *liveness* of the blockchain. For more information see the [paper](https://cardanodocs.com/glossary/#paper) (pages 2 and 3).
+协议的基本假设前提是**大多数都是诚实的**。这意味着至少有 50%+1 的权益所有人是诚实的。在这种情况下，我们可以**证明**攻击者无法打破区块链的*持久化*和*活跃度*。欲了解更多信息，请参阅[论文](/glossary/#paper) (2到3页)。

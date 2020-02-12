@@ -1,16 +1,17 @@
 ---
-title: Cardano SL CLI Options
+title: 卡尔达诺结算层命令行选项
 parent: technical-details
 order: 2
 redirects:
   - /technical/cli-options/
 ---
-## Cardano SL CLI Options
 
-This guide describes all executable files that are used in Cardano SL and all corresponding CLI-options/parameters.
+## 卡尔达诺结算层命令行选项
+
+这份文档描述了卡尔达诺结算层的所有可执行文件以及所有相应的命令行参数。
 
 
-## cardano-node
+### cardano-node
 
 ~~~
 Cardano SL node.

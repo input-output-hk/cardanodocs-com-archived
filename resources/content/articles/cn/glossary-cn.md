@@ -1,145 +1,151 @@
 ---
-title: Glossary
+title: 术语表
 parent: ''
 order: 4
 ---
 
-### [](https://cardanodocs.com/glossary/#ada)ADA
+# 术语表
 
-The name of our currency, named in honor of [Ada Lovelace](https://en.wikipedia.org/wiki/Ada_Lovelace).
+## Ada
 
-### [](https://cardanodocs.com/glossary/#address)ADDRESS
+我们的货币的名字，为纪念 [Ada
+Lovelace](https://en.wikipedia.org/wiki/Ada_Lovelace) 而命名。
 
-The unique identifier of a [node](https://cardanodocs.com/glossary/#node). Please read about [Addresses in Cardano SL](https://cardanodocs.com/cardano/addresses/) for more details.
+## 地址
 
-### [](https://cardanodocs.com/glossary/#balance)BALANCE
+[节点](#节点)的唯一标示符。请阅读[卡尔达诺结算层的地址](/cardano/addresses/)获得更多信息。
 
-Please read about [Balance and Stake in Cardano SL](https://cardanodocs.com/cardano/balance-and-stake/) for explanation.
+## 余额
 
-### [](https://cardanodocs.com/glossary/#block)BLOCK
+请阅读[卡尔达诺结算层的余额和权益](/cardano/balance-and-stake/) 获得解释。
 
-A fundamental part of a [Ledger](https://cardanodocs.com/glossary/#ledger). Please read about [Blocks in Cardano SL](https://cardanodocs.com/technical/blocks/) for technical details.
+## 区块
 
-### [](https://cardanodocs.com/glossary/#blockchain)BLOCKCHAIN
+[账本](#账本)的基础元素。请阅读[卡尔达诺区块](/technical/blocks/)获取技术细节。
 
-Please see [Ledger](https://cardanodocs.com/glossary/#ledger).
+## 区块链
 
-### [](https://cardanodocs.com/glossary/#cardano-sl)CARDANO SL
+请阅读[账本](#账本)。
 
-Cardano SL (or Cardano Settlement Layer) is a decentralized cryptographic currency designed and developed by [IOHK](https://iohk.io/team). Named in honor of [Gerolamo Cardano](https://en.wikipedia.org/wiki/Gerolamo_Cardano).
+## 卡尔达诺结算层
 
-### [](https://cardanodocs.com/glossary/#coin-tossing)COIN TOSSING
+卡尔达诺 SL (或者说卡尔达诺结算层) 是由 [IOHK](https://iohk.io/team) 设计和开发的去中心化加密货币。为纪念 [Gerolamo Cardano](https://en.wikipedia.org/wiki/Gerolamo_Cardano) 而命名。
 
-A Coin Tossing is a protocol that allows two or more parties to obtain a uniformly random value. We use Coin Tossing protocol as a base of [SSC](https://cardanodocs.com/glossary/#ssc). Please read [paper](https://cardanodocs.com/glossary/#paper) (page 36) for more details about Coin Tossing.
+## 掷币
 
-### [](https://cardanodocs.com/glossary/#consensus-algorithm)CONSENSUS ALGORITHM
+掷币协议是允许两方或多方获得均匀随机值的协议。我们使用掷币协议作为 [SSC](#ssc) 的基础。请阅读[论文](#论文)（第36页）以了解掷币协议的更多详情。
 
-A way for a decentralized system to reach a consistent view on shared collections of data. Cardano SL uses the [Ouroboros Consensus Algorithm](https://cardanodocs.com/cardano/proof-of-stake/), which is an algorithm based on [Proof of Stake](https://cardanodocs.com/glossary/#proof-of-stake).
+## 一致性算法
 
-### [](https://cardanodocs.com/glossary/#cryptocurrency)CRYPTOCURRENCY
+分布式系统对于共享数据集合达成一致观点的一种方式。卡尔达诺结算层使用[乌洛波罗斯一致性算法](/cardano/proof-of-stake/)，这是一个基于[权益证明](#权益证明)的算法。
 
-A computer system which uses cryptographic protocols to generate a ledger. Please read about [Cryptocurrency Basics](https://cardanodocs.com/introduction/#cryptocurrency-basics) for more details.
+## 加密货币
 
-### [](https://cardanodocs.com/glossary/#daedalus)DAEDALUS
+使用加密协议来生成账本的计算机系统，请阅读[加密货币基础](/introduction/#cryptocurrency-basics)了解更多信息。
 
-Cardano SL wallet application. It provides a GUI for users, so they can access their funds, send and receive transactions, etc. Please read about [Cardano SL Wallet Frontend](https://cardanodocs.com/technical/wallet-frontend/) for more details.
+## 代达罗斯
 
-### [](https://cardanodocs.com/glossary/#decentralization)DECENTRALIZATION
+卡尔达诺结算层钱包应用。 它为用户提供一个用户界面, 用户可以管理，发送，收取资金等等。请阅读[卡尔达诺结算层钱包应用前端](/technical/wallet-frontend/)获取更多信息。
 
-A notion of a computer system operating through interaction of independent nodes. In case of maintaining a shared data collection such as a ledger, a consensus is required for consistency and reliability of data.
+## 去中心化
 
-### [](https://cardanodocs.com/glossary/#epoch)EPOCH
+通过独立节点进行交互操作的计算机系统的概念。在维护共享数据集合，如账本的情况下，需要对数据的一致性和可靠性达成共识。
 
-A bigger period of time for which we know in advance who will have the right to generate a block in each slot. Please read [paper](https://cardanodocs.com/glossary/#paper) (page 3) for technical details.
+## Epoch
 
-### [](https://cardanodocs.com/glossary/#follow-the-satoshi)FOLLOW THE SATOSHI
+我们将知道谁有权利在每个 slot 中生成一个区块的更长的时间段。请阅读[论文](#论文)（第3页）了解技术细节。
 
-A mechanism whereby stakeholders are selected at random to forge a new block in the blockchain, with a proportional chance to get elected depending on their amount of stake in the protocol.
+## 追随中本聪
 
-### [](https://cardanodocs.com/glossary/#guaranteed-output-delivery)GUARANTEED OUTPUT DELIVERY
+一种随机选择权益所有者在区块链中建立一个新区块的机制，根据协议中的股份数量，按比例获得选举机会。
 
-Guaranteed output delivery is a mechanism that proves that the honest parties are guaranteed to successfully complete the multiparty computation (MPC). We use G.O.D. in [SSC](https://cardanodocs.com/glossary/#ssc).
+## 保证输出交付
 
-### [](https://cardanodocs.com/glossary/#honest-majority)HONEST MAJORITY
+保证输出交付是一种机制，能证明诚实方能保证成功完成多方计算（MPC）。我们在 [SSC](#ssc) 中使用 G.O.D.
 
-Honest majority is a situation when the number of honest participants is strictly greater than the number of adversaries, i.e. at least 50% + 1. Honest majority is assumed by default.
+## 诚实的大多数
 
-### [](https://cardanodocs.com/glossary/#kademlia)KADEMLIA
+诚实的大多数是指诚实的参与者数量严格大于攻击者数量的情况，即至少 50% + 1 是诚实的大多数。
 
-Please see [Peer Discovery](https://cardanodocs.com/glossary/#peer-discovery).
+## Kademlia
 
-### [](https://cardanodocs.com/glossary/#leader-election)LEADER ELECTION
+请阅读[对等点发现](#对等点发现)。
 
-A process of picking who will generate blocks during the next epoch. Leaders are elected with a probability proportional to their stake (see [Proof of Stake](https://cardanodocs.com/glossary/#proof-of-stake), [Follow the Satoshi](https://cardanodocs.com/glossary/#follow-the-satoshi)).
+## 领导者选举
 
-### [](https://cardanodocs.com/glossary/#ledger)LEDGER
+挑选谁将在下一个 epoch 生成区块的过程。将依据领导者的股权比例选出（参见[权益证明](#权益证明), [追随中本聪算法](#追随中本聪算法))。
 
-A collection of data that keeps track of value assigned to individuals. Please read [paper](https://cardanodocs.com/glossary/#paper) (page 32) for technical details.
+## 账本
 
-### [](https://cardanodocs.com/glossary/#lovelace)LOVELACE
+个人所拥有的价值的数据集合。请阅读[论文](#论文)了解技术细节。
 
-Name of a smallest unit of our currency. Named in honor of [Ada Lovelace](https://en.wikipedia.org/wiki/Ada_Lovelace).
+## Lovelace
 
-### [](https://cardanodocs.com/glossary/#minting)MINTING
+我们的货币的最小单位的名称。为纪念 [Ada
+Lovelace](https://en.wikipedia.org/wiki/Ada_Lovelace) 而命名。
 
-A process of a new block creation in [Proof of Stake](https://cardanodocs.com/introduction/#proof-of-stake-and-minting) systems.
+## 铸币
 
-### [](https://cardanodocs.com/glossary/#node)NODE
+在[权益证明和铸币](/introduction/#权益证明和铸币)系统中生成新区块的过程。
 
-A computer program that participates in a decentralized protocol system. Please read [High-level technical overview](https://cardanodocs.com/technical/#high-level-overview) for more details.
+## 节点
 
-### [](https://cardanodocs.com/glossary/#paper)PAPER
+参与分布式协议系统的计算机程序。请阅读[高层次概述](/technical/#高层次概述)获取更多细节。
 
-Official protocol report [Ouroboros: A Provably Secure Proof-of-Stake Blockchain Protocol](https://eprint.iacr.org/2016/889). Please notice that Cardano SL implementation differs from the paper, [read about differences](https://cardanodocs.com/cardano/differences/) for more details.
+## 论文
 
-### [](https://cardanodocs.com/glossary/#peer-discovery)PEER DISCOVERY
+官方协议论文：[乌洛波罗斯：一个可证安全的权益证明区块链协议](https://eprint.iacr.org/2016/889)。请注意，卡尔达诺结算层的实现与论文的实现不同，[请阅读差异](/cardano/differences/)以了解详情。
 
-A way how a node can find other nodes after running. Peer discovery we use is based on Kademlia DHT. Please read [a Kademlia paper](https://pdos.csail.mit.edu/~petar/papers/maymounkov-kademlia-lncs.pdf) for technical details.
+## 节点发现
 
-### [](https://cardanodocs.com/glossary/#plutus)PLUTUS
+节点运行后找到其他节点的方法。我们使用的节点发现基于 Kademlia DHT。请阅读 [ Kademlia 
+论文](https://pdos.csail.mit.edu/~petar/papers/maymounkov-kademlia-lncs.pdf)获得技术细节。
 
-Strictly typed pure functional programming language used for defining smart contracts in Cardano. Please read about [Plutus](https://cardanodocs.com/technical/plutus/introduction/) for more details.
 
-### [](https://cardanodocs.com/glossary/#proof-of-stake)PROOF OF STAKE
+## Plutus
 
-Ouroboros Proof of Stake algorithm is the most important part of the [protocol](https://cardanodocs.com/glossary/#paper). It defines the way [nodes](https://cardanodocs.com/glossary/#node) reach consensus about the state of [ledger](https://cardanodocs.com/glossary/#ledger). Please read about [Ouroboros Proof of Stake Algorithm](https://cardanodocs.com/cardano/proof-of-stake/) for more details.
+在卡尔达诺中定义智能协议的强类型纯函数式语言。请阅读 [Plutus](/technical/plutus/introduction/) 获取更多细节。
 
-### [](https://cardanodocs.com/glossary/#pvss)PVSS
+## 权益证明
 
-PVSS (Publicly Verifiable Secret Sharing) is a cryptographic scheme we use in [SSC](https://cardanodocs.com/glossary/#ssc). Please read about [PVSS implementation in Cardano SL](https://cardanodocs.com/technical/pvss/) for more details.
+乌洛波罗斯权益证明算法是[协议](#论文)中最重要的部分。它定义了[节点](#节点)对[账本](#账本)状态达成共识的方式。请阅读[乌洛波罗斯权益证明算法](/cardano/proof-of-stake/)获取更多细节。
 
-### [](https://cardanodocs.com/glossary/#richman)RICHMAN
+## PVSS
 
-Stakeholder with stake enough for participation in some action. Particularly, there are three kinds of such actions: randomness generation (for [slot leaders elections process](https://cardanodocs.com/technical/leader-selection/)), [heavyweight stake delegation](https://cardanodocs.com/technical/delegation/#heavyweight-delegation) and voting for [update proposals](https://cardanodocs.com/cardano/update-mechanism/#application-update-sign-and-announce).
+公开验证密钥共享模式 (Publicly Verifiable Secret Sharing)是我们在 [SSC](#ssc) 中使用的密码方案。请阅读[卡尔达诺结算层 PVSS](/technical/pvss/) 获取更多细节。
 
-### [](https://cardanodocs.com/glossary/#signing)SIGNING
+## 富人
 
-A way to generate a proof of genuine authenticity of any kind of information we use in [cryptocurrency](https://cardanodocs.com/glossary/#cryptocurrency).
+有足够股权参与一些行动的权益所有人。具体来说，有三种类型的动作：随机性生成（[slot 领导者选举过程](/technical/leader-selection/)），[重量级权益委派](/technical/delegation/#重量级权益委派)，[更新提案的投票](/cardano/update-mechanism/#应用程序更新：签署和宣布)。
 
-### [](https://cardanodocs.com/glossary/#slot)SLOT
+## 签名
 
-A small period of physical time that is significantly larger than the expected difference in clocks on different nodes. Please read [paper](https://cardanodocs.com/glossary/#paper) (page 4) for technical details.
+一种用来生成我们在[加密货币](#加密货币)中使用的保证任何类型信息真实性证据的方法。
 
-### [](https://cardanodocs.com/glossary/#slot-leader)SLOT LEADER
+## Slot
 
-A slot leader is a node which was elected to have a right to create a block in the current slot. Please read [paper](https://cardanodocs.com/glossary/#paper) (page 7) for technical details.
+在不同节点上显著大于预期的不同时钟数的一小段物理时间。请阅读[论文](#论文)(第4页)获取更多技术细节。
 
-### [](https://cardanodocs.com/glossary/#ssc)SSC
+## Slot 领导者
 
-SSC (Shared Seed Computation) is a part of [slot leader election](https://cardanodocs.com/glossary/#leader-election) process. This part is implemented as a [Coin Tossing](https://cardanodocs.com/glossary/#coin-tossing) protocol with [Guaranteed Output Delivery](https://cardanodocs.com/glossary/#guaranteed-output-delivery). As a result of SSC we get a randomness which will be used in [Follow The Satoshi](https://cardanodocs.com/glossary/#follow-the-satoshi) mechanism.
+slot 领导者是一个被选举为有权在当前 slot 创建区块的节点。请阅读[论文](#论文)(第7页)获取更多技术细节。
 
-### [](https://cardanodocs.com/glossary/#stake)STAKE
+## SSC
 
-Please read about [Balance and Stake in Cardano SL](https://cardanodocs.com/cardano/balance-and-stake/) for explanation.
+SSC (Shared Seed Computation) 是 [Slot 领导者选举](#领导者选举)的一部分。这部分被实现为[保证输出交付](#保证输出交付)的[掷币](#掷币)协议。作为 SSC 的结果，我们得到一个将用于[追随中本聪](#追随中本聪)机制的随机算法。
 
-### [](https://cardanodocs.com/glossary/#stakeholder)STAKEHOLDER
+## 权益
 
-A node with a positive stake.
+请阅读 [卡尔达诺结算层的余额和权益](/cardano/balance-and-stake/) 章节获取解释。
 
-### [](https://cardanodocs.com/glossary/#transaction)TRANSACTION
+## 权益所有人
 
-The data that represents the act of transferring value. Please read about [Transactions in Cardano SL](https://cardanodocs.com/cardano/transactions/) for more details.
+一个拥有正数股权的节点。
 
-### [](https://cardanodocs.com/glossary/#transaction-fees)TRANSACTION FEES
+## 转账
 
-Please read about [Transaction Fees in Cardano SL](https://cardanodocs.com/cardano/transaction-fees/) for explanation.
+表示价值转移的数据。请阅读[卡尔达诺结算层的转账](/cardano/transactions/)获取更多细节。
+
+## 转账费用
+
+请阅读[卡尔达诺结算层转账费用](/cardano/transaction-fees/)章节获取解释。
