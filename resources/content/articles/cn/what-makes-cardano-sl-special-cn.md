@@ -1,52 +1,17 @@
 ---
-title: What Makes Cardano SL Special?
+title: 卡尔达诺结算层为什么特别
 parent: introduction
 order: 3
 ---
 
-## What Makes Cardano SL Special?
+## 卡尔达诺结算层为什么特别
+虽然比特币和卡尔达诺结算层之间有相似之处，但这两个加密货币之间也有很多不同之处。最显着的区别是，比特币是工作量证明类型的加密货币，而卡尔达诺结算层使用权益证明的方法达成共识。这鼓励诚信和长期的参与。
 
-<!-- v0.1.0.0 -->
+#### 共识算法的目的
+共识算法被用来产生新的交易区块，使账本更新状态。每当有人发布一个交易区块时，他们（或者说他们的运行加密货币协议的节点）就必须附上他们已经证明的证据。下面讨论两种类型的证明。
 
-While there are similarities between Bitcoin and Cardano SL, there are also many
-differences between these two cryptocurrencies. The most significant difference
-is that Bitcoin is a proof of work type cryptocurrency, while Cardano SL makes
-use of a proof of stake approach to reach consensus. This encourages honesty and
-long term participation.
+#### 工作量证明和挖矿
+工作量证明是加密货币最普遍的共识算法类型。它起源于比特币，加密货币就是这么工作的。为了生成工作证明，计算机必须解决一个挑战。这是难以解决的计算繁重的问题，但解决方案很容易验证。当一台基于网络的工作量证明的计算机找到一个解决方案时，它会将交易发布于同它一起计算的其他计算机。这台计算机会因为产生区块得到交易费和奖励。整个过程被称为挖矿。挖矿是非常耗能的，所需的能源数量在不断增加，这可能导致不健康的竞争。
 
-### Purpose of a Consensus Algorithm
-
-Consensus algorithms are used to produce new transaction blocks, resulting in an
-updated state of the ledger. Whenever someone publishes a block of transactions,
-they — or rather, their node that runs the cryptocurrency protocol — have to
-attach a proof that they have merited it. Below two types of such proofs are
-discussed.
-
-### Proof of Work and Mining
-
-Proof of work is the most common consensus algorithm type for cryptocurrencies.
-It originated in Bitcoin, and this is how this cryptocurrency works. To generate
-proof of work, a computer has to solve a challenge. The challenge is a
-computationally heavy problem which is hard to solve, but the solution is easy
-to verify. When a computer on a proof of work based network finds a solution, it
-publishes it along with the transactions that the computer has been observing while
-cracking the problem. The owner of this computer collects the transaction fees
-and a reward for generating a block. The entire process is called *mining*.
-Mining is very energy consuming, and the amount of energy needed is constantly increasing,
-which can lead to unsound competition.
-
-### Proof of Stake and Minting
-
-Proof of stake is a novel approach to block generation. IOHK scientists led by
-[Prof. Aggelos Kiayias](https://iohk.io/team/aggelos-kiayias/) have designed the
-first provably secure proof of stake algorithm called Ouroboros. Ouroboros lies
-at the heart of Cardano SL. Research team has published a
-[white paper](https://iohk.io/research/papers/a-provably-secure-proof-of-stake-blockchain-protocol/)
-that is a worthy read for anyone with a background in cryptocurrency theory. The
-core idea of proof of stake is that instead of wasting electricity on cracking
-computationally heavy problems, a node is selected to mint a new block, with a
-probability proportional to the amount of coins this node has. If a node
-has positive (&gt; 0) [stake](/cardano/proof-of-stake/#stake), it is called *a
-stakeholder*. If a node eventually becomes chosen to mint a block, it is called *a
-slot leader*. You can read more about this process in [Proof of Stake in Cardano
-SL](/cardano/proof-of-stake/).
+#### 权益证明和铸币
+权益证明是一种生成区块的新方法。由 [Aggelos Kiayias](https://iohk.io/team/aggelos-kiayias/) 教授领导的 IOHK 科学家们设计了第一个可证明的，称为乌洛波罗斯的权益证明算法。乌洛波罗斯是卡尔达诺结算层的核心。研究小组已经发表了一篇白皮书 ，这封白皮书对于那些拥有加密货币理论背景的人来说是值得一读的。权益证明的核心思想是，不要浪费电力来解决计算繁重的问题，而是选择一个节点来铸造一个新的区块，其概率与这个节点的硬币数量成正相关。如果一个节点有整数个(> 0)的 slot，它被称为 slot 所有人。如果一个节点最终被选中来铸造一个区块，那么这个节点被称为 slot 领导者。您可以在卡尔达诺结算层的股权证明中了解更多关于该流程的信息。

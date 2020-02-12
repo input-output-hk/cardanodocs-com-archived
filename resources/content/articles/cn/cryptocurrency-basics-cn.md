@@ -1,71 +1,28 @@
 ---
-title: Cryptocurrency Basics
+title: 加密货币基础
 parent: introduction
 order: 2
 ---
 
-## Cryptocurrency Basics
+## 加密货币基础
+在给出加密货币的定义之前，我们先来谈谈为什么我们在意数字货币，特别是加密货币。
 
-Before giving a definition of a cryptocurrency, let's talk about why we care
-about digital currencies in general and cryptographic currencies in particular.
+### 我们为什么在意?
+#### 速度
 
-### Why Do We Care?
+与传统（也称为法定）中心银行货币，与日元或美元相反，电子货币不需要一个银行系统来转移价值。这一限制的解除，使用数字货币的速度要快于银行业务，尤其是在全球范围内。使用数字货币从大阪转移10美元到丹佛不再需要数天的时间。无论距离如何，所有交易都能迅速完成。
 
-#### Speed
+#### 你掌控你自己的钱
+所有的商业银行账户所有者在收到支付请求后在合理的时间内只能支付一定的金额。银行体系对任何价值量都有限制，使个人无法迅速撤出或转移大量资金。有加密货币的情况下，持有一种称为密钥这一特殊信息的人就可以随意花钱。没有其他实体有权操纵用户拥有的价值。
 
-As opposed to conventional (also known as fiat), centrally banked currencies,
-such as the Yen or the American Dollar, digital currencies do not require a
-banking system to move value. With this restriction lifted, working with digital
-currencies is much faster than working with banking, especially on a global
-scale. Transferring 10 USD from Osaka to Denver no longer takes days when a
-digital currency is used. All transactions are made rapidly regardless of the
-distance.
+#### 匿名
+人们可以根据需要，拥有任意多的加密货币地址，从不同的地址接收，消费资产。经营电子商务商店的商家可以拥有一组收款和退款的地址，以及一个用于他们自身需要的单独的个人『钱包』。通过统一的接口控制所有这些钱包，并且不需要登录到多个支付平台，这使得该过程非常节省时间。
 
-#### You Own Your Money
+#### 安全
+你的钱就像可用于消费的密钥一样安全。这意味着将密钥存储在保险箱中的 USB 闪存上相当于让纸币处于安全状态。即使进行了成功的网络攻击，也绝对没有人能够窃取这笔钱。
 
-All that a commercial bank account owner is given is a promise of being paid a
-certain amount of money within a reasonable amount of time after receiving a
-payout request. Banking systems also have limits to any volume of value being
-moved, rendering an individual unable to withdraw or transfer large amounts
-quickly. In case of cryptocurrencies, the person who holds a special kind of
-information called *a secret key* can spend the money at will. No other entity
-has a power to manipulate the value that a user owns.
+#### 扩展性
+使用一种称[为侧](https://www.blockstream.com/sidechains.pdf)链的方法，以及通用加密货币，如卡尔达诺结算层和比特币，就可以启用特定领域的加密货币，例如以太经典。这样一来，通过特定领域的加密货币开发的任何创新产品都可以让参与者在通用的加密货币中保持价值。这样的应用程序的例子有身份管理，游戏和赌博，以及可验证计算。
 
-#### Pseudonymity
-
-One can have as many cryptocurrency addresses as they wish, receiving and
-spending money from different addresses as per their purpose. A merchant running
-an E-Commerce shop can have a set of addresses for receiving money and issuing
-refunds, and a separate personal "wallet" for their own needs. A single interface is used
-to control all of these wallets, and there is no need to log in to several
-payment platforms, which makes the process very time-efficient.
-
-#### Security
-
-Your money is as secure as the *secret key* that allows spending it. This means
-that storing your secret key on a USB flash drive in a safe is equivalent to
-having banknotes in a safe. Absolutely nobody can steal this money even by
-carrying out a successful cyberattack.
-
-#### Extensibility
-
-Using an approach known as [*side
-chains*](https://www.blockstream.com/sidechains.pdf), general purpose
-cryptocurrencies such as Cardano SL or Bitcoin can enable domain specific
-cryptocurrencies, such as Ethereum Classic. This way, any innovation developed
-via domain specific cryptocurrency can have participants who hold value in a
-general purpose cryptocurrency. Examples of such applications are identity
-management, gaming and gambling, and verifiable computations.
-
-### What is a Cryptocurrency?
-
-Cryptocurrency is a form of digital currency that uses cryptography to
-manipulate value. Cryptography provides a way to generate proof of genuine
-authenticity of any kind of information. This is called *digital signing*. In
-cryptocurrencies we generate a ledger (a database which provides information on
-how much money each address has) by signing and sending transactions to the
-network and receiving blocks of confirmed transactions. Cryptocurrencies are
-normally decentralized, meaning that many people from all over the globe
-participate in ledger generation by running cryptocurrency nodes. Thus, a
-consensus about the state of the ledger has to be achieved. Two most significant
-approaches for achieving such consensus are discussed in the next section.
+#### 什么是加密货币?
+加密货币是一种数字货币形式，使用密码来控制价值。密码学提供了一种生成任何类型信息的真实真实性证据的方法。这就是所谓的数字签名。在加密货币中，我们通过签署和发送交易到网络并接收已确认的交易块，生成一个总账（一个提供每个地址有多少钱的信息的数据库）。加密货币通常是分散的，这意味着来自全球各地的许多人通过运行加密货币节点参与总账的生成。因此，必须达成关于总账状况的共识。下一节讨论实现这种共识的两个最重要的方法。
