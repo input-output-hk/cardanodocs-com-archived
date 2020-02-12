@@ -7,7 +7,8 @@ const ResultWrap = styled.li`
   
       &.item+&.item{
         border-top:1px solid ${({ theme }) => theme.colors.subtleAccent};
-        padding:2rem 0;
+        padding-top:2rem;
+        padding-bottom:2rem;
       }
       &.item{
         margin:0 0 2rem;

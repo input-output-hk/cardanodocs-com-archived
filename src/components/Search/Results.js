@@ -24,6 +24,11 @@ const Wrapper = styled.div`
     .items {
       list-style-type:none;
     }
+    @media (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px){
+      > div p, > div ul li {
+        padding-left:2rem;
+      }
+    }
   }
   .section-title{
     line-height:1;
@@ -125,7 +130,7 @@ const Results = ({ query, onSearch, searchData }) => {
               <p>Showing {page * 10 + 1} - {Math.min(page * 10 + 10, results.length)} of {results.length} results.</p>
               <ul className='items'>
                 {results.slice(page * 10, page * 10 + 10).map((post, i) => (
-                  <Result key={`${i}`} result={post} query={query} />
+                  <Result key={i} result={post} query={query} />
                 ))}
               </ul>
               <NavWrap>

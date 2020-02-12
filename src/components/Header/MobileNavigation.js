@@ -175,8 +175,8 @@ const MobileNavigation = ({ className }) => {
               {mobileNavVisible && (
                 <Nav key='nav' className='text-transform-uppercase'>
                   <ul>
-                    {items.map(item => (
-                      <li>
+                    {items.map((item, i) => (
+                      <li key={i}>
                         <Link
                           href={item.path}
                           onClick={closeNav}
@@ -193,7 +193,7 @@ const MobileNavigation = ({ className }) => {
                     <li className='search-input'>
                       <LanguageConsumer>
                         {({ lang }) => (
-                          <SearchField onSubmit={onSubmit(lang)} />
+                          <SearchField onSubmit={onSubmit(lang)} lang={lang} />
                         )}
                       </LanguageConsumer>
                     </li>
