@@ -3,4 +3,5 @@ title:  Joining the Cardano community
 parent: community
 order: 1
 ---
-## Content
+## Joining the Cardano community
+### parent: Community

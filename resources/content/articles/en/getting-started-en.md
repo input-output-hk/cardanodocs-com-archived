@@ -1,6 +1,7 @@
 ---
 title:  Getting started with Cardano and ada
-parent: for-exchanges
+parent: exchanges
 order: 1
 ---
-## Content
+## Getting started with Cardano and ada
+### parent: For Exchanges

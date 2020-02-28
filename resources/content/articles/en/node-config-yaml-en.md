@@ -1,6 +1,7 @@
 ---
 title:  Configuring a Cardano node using YAML
-parent: running-a-cardano-node
+parent: cardano-node
 order: 3
 ---
- ## Content
+ ## Configuring a Cardano node using YAML
+ ### Running a Cardano Node

@@ -1,6 +1,7 @@
 ---
 title:  Closing a stake pool
-parent: running-a-stake-pool
+parent: stake-pools
 order: 6
 ---
-## Content
+## Closing a stake pool
+### parent: Running a Stake Pool

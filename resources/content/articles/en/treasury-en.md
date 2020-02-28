@@ -1,6 +1,7 @@
 ---
-title: Transaction fees
+title: Trreasury
 parent: rewards-and-fees
 order: 3
 ---
-## Content
+## Treasury
+### parent: Rewards and Fees

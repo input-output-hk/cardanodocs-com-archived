@@ -1,6 +1,7 @@
 ---
 title:  Troubleshooting for exchanges
-parent: for-exchanges
+parent: exchanges
 order: 3
 ---
-## content
+## Troubleshooting for exchanges
+### parent: For Exchanges

@@ -1,8 +1,10 @@
 ---
-title: Running a stake pool
+title: stake pools
 parent: ''
 order: 4
 ---
+## Running a stake pool
+
 Read if: You're an individual who wants to run a stake pool
 
 Read first: [Stake pools](about/stake-pools.md)

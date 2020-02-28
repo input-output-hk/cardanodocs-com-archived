@@ -3,4 +3,5 @@ title: Rewards
 parent: rewards-and-fees
 order: 4
 ---
-## Content
+## Rewards
+### parent: Rewards and fees

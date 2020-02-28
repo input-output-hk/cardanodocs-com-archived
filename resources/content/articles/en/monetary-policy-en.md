@@ -3,4 +3,5 @@ title: Monetary policy
 parent: rewards-and-fees
 order: 1
 ---
-## Content
+## Monetary policy
+### parent: Rewards and Fees

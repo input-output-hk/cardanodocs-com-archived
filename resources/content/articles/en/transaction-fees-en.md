@@ -3,4 +3,5 @@ title: Transaction fees
 parent: rewards-and-fees
 order: 2
 ---
-## Content
+## Transaction fees
+### parent: Rewards and Fees

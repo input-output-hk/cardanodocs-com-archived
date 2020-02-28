@@ -3,4 +3,5 @@ title: Stake pools
 parent: about-cardano
 order: 4
 ---
-## Content
+## Stake pools
+### parent: About Cardano

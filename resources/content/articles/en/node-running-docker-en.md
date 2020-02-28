@@ -1,6 +1,7 @@
 ---
 title:  Running a Cardano node using Docker
-parent: running-a-cardano-node
+parent: cardano-node
 order: 2
 ---
-## Content
+## Running a Cardano node using Docker
+### parent: Running a cardano node

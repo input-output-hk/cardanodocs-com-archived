@@ -1,5 +1,5 @@
 ---
-title: Running a Cardano node
+title: Cardano node
 parent: ''
 order: 3
 ---

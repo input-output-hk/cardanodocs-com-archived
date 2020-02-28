@@ -1,6 +1,7 @@
 ---
 title:  Running a Cardano node using the CLI
-parent: running-a-cardano-node
+parent: cardano-node
 order: 1
 ---
-## Content
+## Running a Cardano node using the CLI
+### parent: Running a cardano node

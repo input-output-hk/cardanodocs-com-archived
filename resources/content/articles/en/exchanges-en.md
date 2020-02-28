@@ -1,5 +1,5 @@
 ---
-title: For exchanges
+title: exchanges
 parent: ''
 order: 5
 ---

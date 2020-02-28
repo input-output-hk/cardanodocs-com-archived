@@ -3,4 +3,5 @@ title: Consensus
 parent: about-cardano
 order: 2
 ---
-## Content
+## Consensus
+### parent: About Cardano

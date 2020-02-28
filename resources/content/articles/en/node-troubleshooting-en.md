@@ -1,6 +1,7 @@
 ---
 title:  Node troubleshooting
-parent: running-a-cardano-node
+parent: cardano-node
 order: 4
 ---
-## Content
+## Node troubleshooting
+### parent: Running a cardano node

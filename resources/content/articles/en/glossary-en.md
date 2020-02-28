@@ -3,6 +3,9 @@ title:  Glossary
 parent: references
 order: 2
 ---
+
+### parent: References
+
 ## Ada
 Ada is the cryptocurrency of the Cardano network, named after computer science pioneer Ada Lovelace.
 

@@ -1,8 +1,11 @@
 ---
 title:  Prerequisites for stake pool operators
-parent: running-a-stake-pool
+parent: stake-pools
 order: 1
 ---
+## Prerequisites for stake pool operators
+### parent: Running a stake pool
+
 Read if: You're an individual who wants to run a stake pool
 
 Read first: [Running a stake pool](../stake-pools.md)

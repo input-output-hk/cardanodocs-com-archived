@@ -1,6 +1,7 @@
 ---
 title:  Stake pool troubleshooting
-parent: running-a-stake-pool
+parent: stake-pools
 order: 5
 ---
-## Content
+## Stake pool troubleshooting
+### parent: Running a stake pool
