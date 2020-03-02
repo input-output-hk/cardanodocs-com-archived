@@ -2,15 +2,12 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Link from '../Link'
 import Button from '../Button'
 import { Helmet } from 'react-helmet'
 import showdown from 'showdown'
 import FullWidthSection from '../FullWidthSection'
 import { SearchField, Result } from '../Search'
 import FlexSearch from 'flexsearch'
-import Highlighter from 'react-highlight-words'
-import Markdown from '../Markdown'
 
 const Wrapper = styled.div`
   padding: 0 0 6rem 0;
@@ -69,7 +66,7 @@ const NavWrap = styled.div`
 
 const Results = ({ query, onSearch, searchData }) => {
   const [results, setResults] = useState(null)
-  const [ page, setPage ] = useState(0)
+  const [page, setPage] = useState(0)
 
   const sanitizeContent = (content) => {
     const converter = new showdown.Converter()
@@ -122,7 +119,7 @@ const Results = ({ query, onSearch, searchData }) => {
           <SearchField initialValue={query} onSubmit={(value, lang) => {
             setPage(0)
             onSearch(value, lang)
-          }}/>
+          }} />
         </HeadingWrap>
         <div className='content'>
           {results &&
@@ -158,7 +155,7 @@ const Results = ({ query, onSearch, searchData }) => {
                       Next
                     </Button>
                   }
-                </div> 
+                </div>
               </NavWrap>
             </div>
           }

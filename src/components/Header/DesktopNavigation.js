@@ -84,7 +84,7 @@ const DesktopNavigation = ({ className }) => (
                       activeClassName='active'
                       tracking={{ label: 'desktop_navigation_' + item.path }}
                       title={item.label}
-                      partiallyActive
+                      partiallyactive={''}
                     >
                       {item.label}
                     </Link>

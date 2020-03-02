@@ -36,7 +36,7 @@ const SubNavTree = ({ items, path }) => {
 }
 
 const NavigationTree = ({ items, path }) => {
-  const [expanded, setExpanded] = useState(false || 'subNavAccordion')
+  const [expanded, setExpanded] = useState(false)
 
   const handleChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false)
