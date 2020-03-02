@@ -8,29 +8,40 @@ import { getURIPathWithoutLang } from '../../helpers/url'
 import { LanguageConsumer } from '../../state'
 
 const Container = styled.div`
+  width:100%;
   flex: 2;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   @media (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
     flex: 1 100%;
   }
 `
 
 const Nav = styled.nav`
+  margin-left: -2rem;
   a {
     font-weight: 600;
     letter-spacing: 0.1em;
-
-    &:hover,
-    &.active,
-    &:focus {
+    position:relative;
+      &:hover,
+      &:focus {
         color: ${({ theme }) => theme.colors.interactiveHighlight};
         background: ${({ background, theme }) =>
-          background || theme.colors.subtle}
+    background || theme.colors.subtle}
+      }
+      &.active:after {
+        position:absolute;
+        content: ' ';
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        background: ${({ theme }) => theme.colors.interactiveHighlight};
+        height:4px;
+        width: 50%;
+        bottom:0;
+        left:25%;
+        opacity: 0.5;
       }
     }
-  }
-
   > ul {
     margin: 0;
 
@@ -45,6 +56,9 @@ const Nav = styled.nav`
       &.active a {
         color: ${({ theme }) => theme.colors.text};
         background: ${({ theme }) => theme.colors.accent};
+      }
+      &:first-of-type {
+        display:none;
       }
     }
   }

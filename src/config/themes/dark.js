@@ -82,6 +82,21 @@ export default {
           },
           borderWidth: '0.2rem'
         }
+      },
+      MuiExpansionPanel: {
+        rounded: {
+          border: 'none',
+          background: 'none',
+          boxShadow: 'none'
+        }
+      },
+      MuiExpansionPanelSummary: {
+        root: {
+          border: 'none',
+          background: 'none',
+          boxShadow: 'none',
+          padding: 'none'
+        }
       }
     }
   }),
@@ -110,7 +125,7 @@ export default {
     active: '#ffffff'
   },
   dimensions: {
-    contentWidth: '124rem',
+    contentWidth: '100vw',
     contentGutterSize: '2rem',
     mobileBreakpoint: 800,
     screenSizes: {

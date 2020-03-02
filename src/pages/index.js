@@ -12,8 +12,10 @@ const HeadingWrap = styled.div`
 `
 
 const NavWrap = styled.div`
+width:100%;
   display: flex;
   align-items: center;
+  flex-direction:column;
   h1 {
     margin: 3rem 0;
   }
@@ -26,11 +28,16 @@ const NavWrap = styled.div`
 `
 
 const Title = styled.div`
+  width:100%;
   h1 {
     span {
       margin: 0 0.4rem;
       position: relative;
     }
+  }
+  margin: 0;
+  @media (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
+    flex: 1 100%;
   }
 `
 
