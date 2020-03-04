@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { Location } from '@reach/router'
 import NavigationTree from './NavigationTree'
+import { LanguageConsumer } from '../../state'
 
 const Container = styled.div`
   width: 100%;
@@ -27,11 +29,19 @@ const Nav = styled.nav`
 `
 
 const SideNav = ({ items, path }) => (
-  <Container>
-    <Nav>
-      <NavigationTree items={items} path={path} />
-    </Nav>
-  </Container>
+  <LanguageConsumer>
+    {({ lang }) => (
+      <Location>
+        {({ location }) => (
+          <Container>
+            <Nav>
+              <NavigationTree lang={lang} items={items} path={path} currentPathname={location.pathname} />
+            </Nav>
+          </Container>
+        )}
+      </Location>
+    )}
+  </LanguageConsumer>
 )
 
 SideNav.propTypes = {

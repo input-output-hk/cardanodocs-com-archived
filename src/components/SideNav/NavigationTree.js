@@ -5,8 +5,8 @@ import Link from '../Link'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel'
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import { navigate } from 'gatsby'
 
 const Nav = styled.ul`
   list-style: none;
@@ -28,29 +28,62 @@ const Nav = styled.ul`
   }
 `
 
-const SubNavTree = ({ items, path }) => {
-  return items.map((item) => {
-    return item.children.length > 0 &&
-      <NavigationTree items={item.children} path={`${path}/${item.key}`} />
-  })
-}
+const Accordion = ({ item: { path, title, children, hasContent }, lang, currentPathname }) => {
+  const isActive = () => {
+    const fullPath = lang ? `/${lang}${path}` : path
+    return currentPathname.substring(0, fullPath.length) === fullPath
+  }
 
-const NavigationTree = ({ items, path }) => {
-  const [expanded, setExpanded] = useState(false)
+  const [expanded, setExpanded] = useState(isActive())
 
-  const handleChange = panel => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false)
+  const handleChange = (_, isExpanded) => {
+    if (hasContent) return navigate(`/${lang}${path}`)
+    return !isActive() && setExpanded(isExpanded)
   }
 
   return (
-    <Nav>
+    <ExpansionPanel expanded={expanded} onChange={handleChange}>
+      <ExpansionPanelSummary
+        expandIcon={isActive() ? <span /> : <ExpandMoreIcon />}
+        aria-controls='panel1bh-content'
+        id='panel1bh-header'
+      >
+        <div>{title}</div>
+      </ExpansionPanelSummary>
+      <ExpansionPanelDetails>
+        <NavigationTree
+          items={children}
+          path={path}
+          lang={lang}
+          currentPathname={currentPathname}
+          isRoot={false}
+        />
+      </ExpansionPanelDetails>
+    </ExpansionPanel>
+  )
+}
+
+Accordion.propTypes = {
+  item: PropTypes.shape({
+    children: PropTypes.array.isRequired,
+    title: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
+    hasContent: PropTypes.bool.isRequired
+  }),
+  lang: PropTypes.string.isRequired,
+  currentPathname: PropTypes.string.isRequired
+}
+
+const NavigationTree = ({ items, lang, path, currentPathname }) => {
+  return (
+    <Nav key={path}>
       {items.map((item) => (
-        <li key={item.key}>
-          {item.isLink &&
+        <li key={item.path}>
+          {item.children.length === 0 &&
             <Link
-              href={`${path}/${item.key}/`}
+              href={`${item.path}`}
               activeClassName='active'
-              tracking={{ label: `desktop_navigation_${path}/${item.key}/` }}
+              tracking={{ label: `desktop_navigation_${item.path}` }}
               title={item.title}
               partiallyActive
             >
@@ -58,21 +91,12 @@ const NavigationTree = ({ items, path }) => {
             </Link>
           }
 
-          {!item.isLink &&
-            <ExpansionPanel expanded={expanded === 'subNavAccordion'} onChange={handleChange('subNavAccordion')}>
-              <ExpansionPanelSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls='panel1bh-content'
-                id='panel1bh-header'
-              >
-                <Typography>
-                  <p>{item.title}</p>
-                </Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <SubNavTree items={items} path={path} />
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
+          {item.children.length > 0 &&
+            <Accordion
+              item={item}
+              lang={lang}
+              currentPathname={currentPathname}
+            />
           }
         </li>
       ))}
@@ -81,8 +105,10 @@ const NavigationTree = ({ items, path }) => {
 }
 
 NavigationTree.propTypes = {
-  items: PropTypes.array,
-  path: PropTypes.string
+  items: PropTypes.array.isRequired,
+  lang: PropTypes.string.isRequired,
+  currentPathname: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired
 }
 
 export default NavigationTree
