@@ -142,7 +142,7 @@ export default createGlobalStyle`
   ${() => {
     const spacings = []
     for (let i = 0; i <= 5; i++) {
-      const positions = [ 'top', 'right', 'bottom', 'left' ]
+      const positions = ['top', 'right', 'bottom', 'left']
       positions.forEach(pos => {
         spacings.push(`
           .padding-${pos}-${i} {
@@ -161,5 +161,11 @@ export default createGlobalStyle`
 
   .max-width-100 {
     max-width: 100%;
+  }
+
+  .horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 `

@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Link from '../Link'
+import Accordion from './Accordion'
 
 const Nav = styled.ul`
   list-style: none;
   margin:0;
+  div ul {
+    margin-left: 2rem;
+  }
   li {
     padding: 2rem 0;
   }
@@ -22,53 +26,6 @@ const Nav = styled.ul`
     padding:0;
   }
 `
-
-const AccordionContainer = styled.div`
-  margin-left: 2rem;
-`
-
-const Accordion = ({ item: { path, title, children, hasContent }, lang, currentPathname }) => {
-  const isActive = () => {
-    const fullPath = lang ? `/${lang}${path}` : path
-    return currentPathname.substring(0, fullPath.length) === fullPath
-  }
-
-  const [expanded, setExpanded] = useState(isActive())
-
-  const onClick = (e) => {
-    if (hasContent) return
-    e.preventDefault()
-    return !isActive() && setExpanded(!expanded)
-  }
-
-  return (
-    <AccordionContainer>
-      <Link activeClassName='active' partiallyActive href={`/${lang}${path}`} onClick={onClick}>
-        {title}
-      </Link>
-      {expanded &&
-        <NavigationTree
-          items={children}
-          path={path}
-          lang={lang}
-          currentPathname={currentPathname}
-          isRoot={false}
-        />
-      }
-    </AccordionContainer>
-  )
-}
-
-Accordion.propTypes = {
-  item: PropTypes.shape({
-    children: PropTypes.array.isRequired,
-    title: PropTypes.string.isRequired,
-    path: PropTypes.string.isRequired,
-    hasContent: PropTypes.bool.isRequired
-  }),
-  lang: PropTypes.string.isRequired,
-  currentPathname: PropTypes.string.isRequired
-}
 
 const NavigationTree = ({ items, lang, path, currentPathname }) => {
   return (
