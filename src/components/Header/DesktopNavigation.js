@@ -4,8 +4,7 @@ import styled from 'styled-components'
 import Query from './Query'
 import Link from '../Link'
 import PropTypes from 'prop-types'
-import { getURIPathWithoutLang } from '../../helpers/url'
-import { LanguageConsumer } from '../../state'
+import { Location } from '@reach/router'
 
 const Container = styled.div`
   width:100%;
@@ -52,39 +51,40 @@ const Nav = styled.nav`
       a {
         padding: 2rem;
         display: inline-block;
-      }
-      &.active a {
-        color: ${({ theme }) => theme.colors.text};
-        background: ${({ theme }) => theme.colors.accent};
-      }
-      &:first-of-type {
-        display:none;
+
+        &.active {
+          color: ${({ theme }) => theme.colors.text};
+        }
       }
     }
   }
 `
 
-const isActive = (lang, href) => {
-  const uri = getURIPathWithoutLang(lang)
-  return uri.substr(0, href.length) === href ? 'active' : ''
+function isActive (path, currentPathname) {
+  let rootPath = path
+    .replace(/^\//, '')
+    .replace(/\/$/, '')
+    .split('/').slice(0, 2).join('/')
+  
+  rootPath = `/${rootPath}/`
+  return currentPathname.substring(0, rootPath.length) === rootPath
 }
 
 const DesktopNavigation = ({ className }) => (
-  <LanguageConsumer>
-    {({ lang }) => (
+  <Location>
+    {({ location }) => (
       <Container className={`${className}`}>
         <Query
           render={items => (
             <Nav className='text-transform-uppercase'>
               <ul>
                 {items.map(item => (
-                  <li key={item.path} className={isActive(lang, item.path)}>
+                  <li key={item.path}>
                     <Link
                       href={item.path}
-                      activeClassName='active'
+                      className={isActive(item.path, location.pathname) ? 'active' : ''}
                       tracking={{ label: 'desktop_navigation_' + item.path }}
                       title={item.label}
-                      partiallyactive={''}
                     >
                       {item.label}
                     </Link>
@@ -96,7 +96,7 @@ const DesktopNavigation = ({ className }) => (
         />
       </Container>
     )}
-  </LanguageConsumer>
+  </Location>
 )
 
 DesktopNavigation.propTypes = {

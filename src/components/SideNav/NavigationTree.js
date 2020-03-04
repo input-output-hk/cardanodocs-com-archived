@@ -2,11 +2,6 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Link from '../Link'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel'
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import { navigate } from 'gatsby'
 
 const Nav = styled.ul`
   list-style: none;
@@ -28,6 +23,10 @@ const Nav = styled.ul`
   }
 `
 
+const AccordionContainer = styled.div`
+  margin-left: 2rem;
+`
+
 const Accordion = ({ item: { path, title, children, hasContent }, lang, currentPathname }) => {
   const isActive = () => {
     const fullPath = lang ? `/${lang}${path}` : path
@@ -36,21 +35,18 @@ const Accordion = ({ item: { path, title, children, hasContent }, lang, currentP
 
   const [expanded, setExpanded] = useState(isActive())
 
-  const handleChange = (_, isExpanded) => {
-    if (hasContent) return navigate(`/${lang}${path}`)
-    return !isActive() && setExpanded(isExpanded)
+  const onClick = (e) => {
+    if (hasContent) return
+    e.preventDefault()
+    return !isActive() && setExpanded(!expanded)
   }
 
   return (
-    <ExpansionPanel expanded={expanded} onChange={handleChange}>
-      <ExpansionPanelSummary
-        expandIcon={isActive() ? <span /> : <ExpandMoreIcon />}
-        aria-controls='panel1bh-content'
-        id='panel1bh-header'
-      >
-        <div>{title}</div>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
+    <AccordionContainer>
+      <Link activeClassName='active' partiallyActive href={`/${lang}${path}`} onClick={onClick}>
+        {title}
+      </Link>
+      {expanded &&
         <NavigationTree
           items={children}
           path={path}
@@ -58,8 +54,8 @@ const Accordion = ({ item: { path, title, children, hasContent }, lang, currentP
           currentPathname={currentPathname}
           isRoot={false}
         />
-      </ExpansionPanelDetails>
-    </ExpansionPanel>
+      }
+    </AccordionContainer>
   )
 }
 
