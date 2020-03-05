@@ -15,6 +15,12 @@ const Dropdown = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (min-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
+      justify-content: space-between;
+    }
+    a svg {
+      min-width: 14px;
+    }
   }
 
   .dropdown__content {
@@ -26,13 +32,13 @@ const Dropdown = styled.div`
     max-height:0px;
   }
 
-  .expandableContent-leave {
-    max-height: 100rem;
-  }
-
   .expandableContent-enter.expandableContent-enter-active {
     max-height: 100rem;
     transition: max-height 500ms ease-in;
+  }
+
+  .expandableContent-leave {
+    max-height: 100rem;
   }
 
   .expandableContent-leave.expandableContent-leave-active {
