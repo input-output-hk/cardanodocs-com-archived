@@ -12,6 +12,9 @@ const Dropdown = styled.div`
   .dropDownHeading {
     color: ${({ theme }) => theme.colors.text};
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .dropdown__content {

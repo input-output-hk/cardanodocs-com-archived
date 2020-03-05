@@ -15,15 +15,17 @@ const Nav = styled.nav`
   text-transform: uppercase;
   > ul > li {
     position: relative;
-    &:after {
-      content: '';
-      position: absolute;
-      bottom:0;
-      left:0;
-      height:1px;
-      width:5rem;
-      background:#fff;
-      opacity:0.1;
+    @media (min-width:${({ theme }) => theme.dimensions.screenSizes.medium}px) {
+      &:after {
+        content: '';
+        position: absolute;
+        bottom:0;
+        left:0;
+        height:1px;
+        width: 5rem;
+        background:#fff;
+        opacity:0.1;
+      }
     }
   }
 `

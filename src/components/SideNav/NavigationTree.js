@@ -7,8 +7,10 @@ import Accordion from './Accordion'
 const Nav = styled.ul`
   list-style: none;
   margin:0;
-  div ul {
-    margin-left: 2rem;
+  @media (min-width: ${({ theme }) => theme.dimensions.screenSizes.medium}px){
+    div ul {
+      margin-left: 2rem;
+    }
   }
   li {
     padding: 2rem 0;
@@ -24,6 +26,7 @@ const Nav = styled.ul`
   @media(max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
     text-align: center;
     padding:0;
+    background: ${({ theme }) => theme.colors.subtle};
   }
 `
 

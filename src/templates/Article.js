@@ -23,7 +23,7 @@ const ContentCol = styled.article`
 const ContentWrap = styled.main`
   display: flex;
   @media(max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 `
 
