@@ -24,27 +24,27 @@ const Dropdown = styled.div`
   }
 
   .expandableContent-leave {
-    max-height: 1000px;
+    max-height: 100rem;
   }
 
   .expandableContent-enter.expandableContent-enter-active {
-    max-height: 1000px;
-    transition: max-height 300ms ease-in;
+    max-height: 100rem;
+    transition: max-height 500ms ease-in;
   }
 
   .expandableContent-leave.expandableContent-leave-active {
     max-height:0px;
-    transition: max-height 500ms ease-in;
+    transition: max-height 300ms ease;
   }
 
   .dropDownArrow {
     transform:rotate(0);
-    transition: all 600ms ease-in-out;
+    transition: all 300ms ease;
   }
 
   .dropDownArrow.down {
     transform:rotate(90deg);
-    transition: all 200ms ease-in-out;
+    transition: all 300ms ease;
   }
 `
 
@@ -79,8 +79,8 @@ const Accordion = ({ item: { path, title, children, hasContent }, lang, currentP
       <ReactCSSTransitionGroup
         component={Fragment}
         transitionName='expandableContent'
-        transitionEnterTimeout={300}
-        transitionLeaveTimeout={500}
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={300}
       >
         {expanded &&
           <div
