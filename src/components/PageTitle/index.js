@@ -19,7 +19,7 @@ const Heading = styled.h1`
 
 const NavWrap = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction:column;
   @media (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
     flex-flow: wrap;
     > div {

@@ -2,10 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Link from '../Link'
+import Accordion from './Accordion'
 
 const Nav = styled.ul`
   list-style: none;
   margin:0;
+  @media (min-width: ${({ theme }) => theme.dimensions.screenSizes.medium}px){
+    div ul {
+      margin-left: 2rem;
+    }
+  }
   li {
     padding: 2rem 0;
   }
@@ -20,38 +26,45 @@ const Nav = styled.ul`
   @media(max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
     text-align: center;
     padding:0;
+    background: ${({ theme }) => theme.colors.subtle};
   }
 `
 
-const NavigationTree = ({ items, path }) => (
-  <Nav>
-    {items.map((item) => (
-      <li key={item.key}>
-        {item.isLink &&
-          <Link
-            href={`${path}/${item.key}/`}
-            activeClassName='active'
-            tracking={{ label: `desktop_navigation_${path}/${item.key}/` }}
-            title={item.title}
-            partiallyActive
-          >
-            {item.title}
-          </Link>
-        }
-        {!item.isLink &&
-          <p>{item.title}</p>
-        }
-        {item.children.length > 0 &&
-          <NavigationTree items={item.children} path={`${path}/${item.key}`} />
-        }
-      </li>
-    ))}
-  </Nav>
-)
+const NavigationTree = ({ items, lang, path, currentPathname }) => {
+  return (
+    <Nav key={path}>
+      {items.map((item) => (
+        <li key={item.path}>
+          {item.children.length === 0 &&
+            <Link
+              href={`${item.path}`}
+              activeClassName='active'
+              tracking={{ label: `desktop_navigation_${item.path}` }}
+              title={item.title}
+              partiallyActive
+            >
+              {item.title}
+            </Link>
+          }
+
+          {item.children.length > 0 &&
+            <Accordion
+              item={item}
+              lang={lang}
+              currentPathname={currentPathname}
+            />
+          }
+        </li>
+      ))}
+    </Nav>
+  )
+}
 
 NavigationTree.propTypes = {
-  items: PropTypes.array,
-  path: PropTypes.string
+  items: PropTypes.array.isRequired,
+  lang: PropTypes.string.isRequired,
+  currentPathname: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired
 }
 
 export default NavigationTree
