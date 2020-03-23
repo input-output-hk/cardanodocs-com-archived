@@ -14,7 +14,6 @@ const Header = styled.header`
   margin: 0rem auto 0;
   width: 100%;
   max-width: ${({ theme }) => theme.dimensions.contentWidth};
-  padding: 0 ${({ theme }) => theme.dimensions.contentGutterSize};
   display: flex;
   align-items: center;
 `

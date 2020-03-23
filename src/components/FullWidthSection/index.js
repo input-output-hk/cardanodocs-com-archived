@@ -14,7 +14,6 @@ const InnerContainer = styled.div`
   max-width: ${({ theme }) => theme.dimensions.contentWidth};
   display: block;
   margin: 0 auto;
-  padding: 0 ${({ theme }) => theme.dimensions.contentGutterSize};
 `
 
 const FullWidthSection = ({ children, background, fullWidthContent }) => (
