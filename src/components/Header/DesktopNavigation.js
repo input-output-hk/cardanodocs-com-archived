@@ -1,14 +1,10 @@
 /* eslint-disable */
-import React, { useState, useEffect, Fragment, forwardRef, createRef } from 'react'
+import React, { useState, Fragment } from 'react'
 import styled from 'styled-components'
 import Query from './Query'
-import Link from '../Link'
+import TabNav from './TabNav'
 import PropTypes from 'prop-types'
 import { Location } from '@reach/router'
-import { navigate } from 'gatsby'
-import AppBar from '@material-ui/core/AppBar'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
 
 const Container = styled.div`
   max-width: 100vw;
@@ -22,15 +18,9 @@ const Container = styled.div`
 
 const Nav = styled(Container)`
   div {
-    background:none;
-    box-shadow:none;
+    background: transparent;
+    box-shadow: none;
   }
-  /* .MuiTabs-scrollButtons {
-    position:absolute;
-    height:48px;
-    z-index:1;
-    background: ${({ theme }) => theme.colors.interactiveHighlight};
-  } */
   a {
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -73,31 +63,24 @@ const Nav = styled(Container)`
   }
 `
 
-function isActive(path, currentPathname) {
-  let rootPath = path
+function getPath(path) {
+   let rootPath = path
     .replace(/^\//, '')
     .replace(/\/$/, '')
     .split('/').slice(0, 2).join('/')
 
   rootPath = `/${rootPath}/`
-  return currentPathname.substring(0, rootPath.length) === rootPath
+
+  return rootPath
 }
 
-function a11yProps(index) {
-  return {
-    id: `scrollable-auto-tab-${labelTransform(index)}`,
-    'aria-controls': `scrollable-auto-tabpanel-${labelTransform(index)}`,
-  };
-}
+const DesktopNavigation = () => {
 
-function labelTransform(label) {
-  return label.toLowerCase().replace(/ /g, '-')
-}
-
-const DesktopNavigation = ({ className, label }) => {
-  const ref = createRef()
-
-  const TabLink = forwardRef((props, ref) => <Link {...props} {...ref}/> )
+  const [value, setValue] = useState(getPath(location.pathname))
+  
+  const handleChange = (e, value) => {
+    setValue(value)
+  }
 
   return (
     <Location>
@@ -106,29 +89,16 @@ const DesktopNavigation = ({ className, label }) => {
           <Nav>
             <Query
               render={items => (
-                <AppBar 
-                  position='static' 
-                  color='default'
-                  component='div'
-                >
-                  <Tabs
-                    indicatorColor='primary'
-                    textColor='primary'
-                    variant='scrollable'
-                    scrollButtons='on'
-                    aria-label='scrollable auto tabs example'
-                  >
-                    {items.map(item => (
-                      <Tab label={item.label} {...a11yProps(item.label)} key={item.path} href={item.path} component={TabLink} className={isActive(item.path, location.pathname) ? 'active' : ''} />
-                    ))}
-                  </Tabs>
-                </AppBar>
+                <TabNav
+                  tabItems={items}
+                  selectedTab={value}
+                  onChange={handleChange}
+                />
               )}
             />
           </Nav>
         </Fragment>
-      )
-      }
+      )}
     </Location >
   )
 
