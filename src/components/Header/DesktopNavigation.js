@@ -1,23 +1,36 @@
 /* eslint-disable */
-import React from 'react'
+import React, { useState, useEffect, Fragment, forwardRef, createRef } from 'react'
 import styled from 'styled-components'
 import Query from './Query'
 import Link from '../Link'
 import PropTypes from 'prop-types'
 import { Location } from '@reach/router'
+import { navigate } from 'gatsby'
+import AppBar from '@material-ui/core/AppBar'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
 
 const Container = styled.div`
-  width:100%;
-  flex: 2;
+  max-width: 100vw;
+  /* flex: 2;
   display: flex;
   justify-content: flex-start;
   @media (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
     flex: 1 100%;
-  }
+  } */
 `
 
-const Nav = styled.nav`
-  margin-left: -2rem;
+const Nav = styled(Container)`
+  div {
+    background:none;
+    box-shadow:none;
+  }
+  /* .MuiTabs-scrollButtons {
+    position:absolute;
+    height:48px;
+    z-index:1;
+    background: ${({ theme }) => theme.colors.interactiveHighlight};
+  } */
   a {
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -60,44 +73,66 @@ const Nav = styled.nav`
   }
 `
 
-function isActive (path, currentPathname) {
+function isActive(path, currentPathname) {
   let rootPath = path
     .replace(/^\//, '')
     .replace(/\/$/, '')
     .split('/').slice(0, 2).join('/')
-  
+
   rootPath = `/${rootPath}/`
   return currentPathname.substring(0, rootPath.length) === rootPath
 }
 
-const DesktopNavigation = ({ className }) => (
-  <Location>
-    {({ location }) => (
-      <Container className={`${className}`}>
-        <Query
-          render={items => (
-            <Nav className='text-transform-uppercase'>
-              <ul>
-                {items.map(item => (
-                  <li key={item.path}>
-                    <Link
-                      href={item.path}
-                      className={isActive(item.path, location.pathname) ? 'active' : ''}
-                      tracking={{ label: 'desktop_navigation_' + item.path }}
-                      title={item.label}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Nav>
-          )}
-        />
-      </Container>
-    )}
-  </Location>
-)
+function a11yProps(index) {
+  return {
+    id: `scrollable-auto-tab-${labelTransform(index)}`,
+    'aria-controls': `scrollable-auto-tabpanel-${labelTransform(index)}`,
+  };
+}
+
+function labelTransform(label) {
+  return label.toLowerCase().replace(/ /g, '-')
+}
+
+const DesktopNavigation = ({ className, label }) => {
+  const ref = createRef()
+
+  const TabLink = forwardRef((props, ref) => <Link {...props} {...ref}/> )
+
+  return (
+    <Location>
+      {({ location }) => (
+        <Fragment>
+          <Nav>
+            <Query
+              render={items => (
+                <AppBar 
+                  position='static' 
+                  color='default'
+                  component='div'
+                >
+                  <Tabs
+                    indicatorColor='primary'
+                    textColor='primary'
+                    variant='scrollable'
+                    scrollButtons='on'
+                    aria-label='scrollable auto tabs example'
+                  >
+                    {items.map(item => (
+                      <Tab label={item.label} {...a11yProps(item.label)} key={item.path} href={item.path} component={TabLink} className={isActive(item.path, location.pathname) ? 'active' : ''} />
+                    ))}
+                  </Tabs>
+                </AppBar>
+              )}
+            />
+          </Nav>
+        </Fragment>
+      )
+      }
+    </Location >
+  )
+
+}
 
 DesktopNavigation.propTypes = {
   className: PropTypes.string
