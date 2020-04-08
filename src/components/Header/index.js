@@ -1,36 +1,62 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import MediaQuery from 'react-responsive'
-import DesktopNavigation from './DesktopNavigation'
 import MobileNavigation from './MobileNavigation'
 import Logo from './Logo'
 import { ThemeConsumer } from '../../state'
+import LanguagePicker from '../../components/PickerContainer/LanguagePicker'
+import ThemePicker from '../../components/PickerContainer/ThemePicker'
+// import { Typography } from '@material-ui/core'
 
-const Container = styled.header`
-  width: 100%;
+const Header = styled.header`
+  min-height: 8rem;
   position: relative;
-  margin: 10rem 0 12rem;
+  z-index: 2;
+  margin: 0rem auto 0;
+  width: 100%;
+  max-width: ${({ theme }) => theme.dimensions.contentWidth};
+  display: flex;
+  align-items: center;
 `
 
-const MainTitleLogo = styled.div`
+const HeaderTitleLogo = styled.div`
   z-index: 2;
+  flex-direction: row;
+`
+
+const PickerComponent = styled.ul`
+  flex: 2;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  @media (max-width: ${({ theme }) => theme.dimensions.mobileBreakpoint}px) {
+    display: none;
+  }
 `
 
 export default () => (
   <ThemeConsumer>
     {({ theme }) => (
       <Fragment>
-        <MediaQuery query={`(max-width: ${theme.dimensions.mobileBreakpoint - 1}px)`}>
-          <MobileNavigation />
-        </MediaQuery>
-        <Container>
-          <MainTitleLogo>
+        <MobileNavigation className='hide-on-desktop' />
+        <Header>
+          <HeaderTitleLogo>
             <Logo />
-          </MainTitleLogo>
-          <MediaQuery query={`(min-width: ${theme.dimensions.mobileBreakpoint}px)`}>
-            <DesktopNavigation />
-          </MediaQuery>
-        </Container>
+            {/* <Typography variant='h4' color='primary'>
+              Material-UI Version
+            </Typography> */}
+          </HeaderTitleLogo>
+          <PickerComponent>
+            <li>
+              <LanguagePicker />
+            </li>
+            <li>
+              <ThemePicker />
+            </li>
+          </PickerComponent>
+        </Header>
       </Fragment>
     )}
   </ThemeConsumer>

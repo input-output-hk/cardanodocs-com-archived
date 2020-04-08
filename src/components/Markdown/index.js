@@ -4,11 +4,12 @@ import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import Link from '../Link'
 import Image from '../Image'
+import Code from '../Code'
 
 const Markdown = (props) => (
   <ReactMarkdown
     {...props}
-    renderers={{ link: Link, blockquote: Blockquote, image: Image, ...props.renderers }}
+    renderers={{ link: Link, blockquote: Blockquote, code: Code, image: Image, ...props.renderers }}
   />
 )
 

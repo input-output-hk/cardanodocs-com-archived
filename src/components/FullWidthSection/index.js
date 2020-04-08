@@ -7,14 +7,13 @@ const Container = styled.div`
   width: 100vw;
   left: 50%;
   margin-left: -50vw;
-  background: ${({ background, theme }) => background || theme.colors.primaryHighlight};
+  background: ${({ background, theme }) => background || theme.colors.subtle};
 `
 
 const InnerContainer = styled.div`
   max-width: ${({ theme }) => theme.dimensions.contentWidth};
   display: block;
   margin: 0 auto;
-  padding: 0 ${({ theme }) => theme.dimensions.contentGutterSize};
 `
 
 const FullWidthSection = ({ children, background, fullWidthContent }) => (

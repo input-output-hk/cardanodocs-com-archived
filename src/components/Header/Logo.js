@@ -1,21 +1,37 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ThemeConsumer } from '../../state'
+import Link from '../Link'
 
-const LogoImage = styled.img`
-  margin: 0 0 1.6rem 0;
-  width: 11rem;
+const Wrap = styled.div`
+  display: inline-block;
+  text-transform: uppercase;
+
+  img,
+  strong {
+    vertical-align: middle;
+  }
+  img {
+    width: 3.5rem;
+    margin: 0 2rem 0 0;
+  }
+  strong {
+    display: inline-block;
+    color: ${({ theme }) => theme.colors.heading};
+  }
 `
 
 const Logo = () => (
-  <div className='text-align-center'>
-    <ThemeConsumer>
-      {({ theme }) => (
-        <LogoImage src={theme.images.Logo} alt='Logo' />
-      )}
-    </ThemeConsumer>
-    <h2 className='text-transform-uppercase margin-bottom-4 margin-top-1'>IOHK Gatsby <strong>Starter</strong></h2>
-  </div>
+  <ThemeConsumer>
+    {({ theme }) => (
+      <Wrap>
+        <Link href='/'>
+          <img src={theme.images.Logo} alt='Logo' />
+          <strong>Cardano Documentation</strong>
+        </Link>
+      </Wrap>
+    )}
+  </ThemeConsumer>
 )
 
 export default Logo

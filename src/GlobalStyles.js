@@ -59,6 +59,19 @@ export default createGlobalStyle`
     }
   }
 
+  pre, code {
+    white-space: pre-wrap !important;       /* css-3 */
+    white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap !important;      /* Opera 4-6 */
+    white-space: -o-pre-wrap !important;    /* Opera 7 */
+    word-wrap: break-word !important;       /* Internet Explorer 5.5+ */
+    letter-spacing: 0.1rem;
+  }
+
+  .active {
+    color: ${({ theme }) => theme.colors.interactiveHighlight};
+  }
+
   img {
     max-width: 100%;
     height: auto;
@@ -114,6 +127,10 @@ export default createGlobalStyle`
     display: inline-block;
   }
 
+  .ml-5 {
+    margin-left: 5rem;
+  }
+
   ${'' /**
     Example:
 
@@ -125,7 +142,7 @@ export default createGlobalStyle`
   ${() => {
     const spacings = []
     for (let i = 0; i <= 5; i++) {
-      const positions = [ 'top', 'right', 'bottom', 'left' ]
+      const positions = ['top', 'right', 'bottom', 'left']
       positions.forEach(pos => {
         spacings.push(`
           .padding-${pos}-${i} {
@@ -144,5 +161,11 @@ export default createGlobalStyle`
 
   .max-width-100 {
     max-width: 100%;
+  }
+
+  .horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 `

@@ -1,36 +1,40 @@
 ---
 title: Ja (Japanese) footer content
-product_info: Loremのイプサム
+product_info: Cardanoについてもっと知る
 product_links:
-  - href: 'https://cardanoexplorer.com/'
-    label: カルダノ・エクスプローラー
-  - href: 'https://cardanofoundation.org/'
-    label: カルダノファウンデーション
+  - href: 'https://shelleyexplorer.cardano.org'
+    label: Shelleyエクスプローラー
+  - href: 'https://cardanofoundation.org/en'
+    label: Cardano財団
   - href: 'https://cardanodocs.com/introduction/'
     label: ドキュメンテーション
   - href: 'https://github.com/input-output-hk/cardano-sl'
-    label: カルダノSLソース
-  - href: 'https://whycardano.com/'
-    label: カルダノを選ぶ理由
-  - href: 'https://www.cardano.org/en/ouroboros/'
-    label: ウロボロスアルゴリズム
+    label: Cardano SLソース
+  - href: 'https://whycardano.com/jp/'
+    label: なぜCardanoを構築するのか
+  - href: 'https://www.cardano.org/ja/ouroboros-2/'
+    label: Ouroborosアルゴリズム
 community_info: コミュニティに参加する
 community_email: info+ja@cardano.org
 community_links:
-  - href: '#'
-    label: カルダノコミュニティ
-  - href: '#'
-    label: カルダノチャット
-  - href: 'https://forum.cardano.org/'
-    label: カルダノフォーラム
+  - href: 'https://www.cardano.org/ja/home-2/'
+    label: Cardanoコミュニティ
+  - href: 'https://t.me/CardanoJapanOfficial'
+    label: Cardano Chat
+  - href: 'https://forum.cardano.org/c/japanese/19'
+    label: Cardanoフォーラム
   - href: 'https://www.reddit.com/r/cardano/'
-    label: カルダノReddit
-  - href: 'https://www.youtube.com/channel/UCbQ9vGfezru1YRI1zDCtTGg'
-    label: カルダノ財団YouTube
+    label: Cardano Reddit
+  - href: 'https://www.youtube.com/cardanofoundation'
+    label: Cardano Foundation YouTube
   - href: 'https://twitter.com/cardanostiftung'
-    label: カルダノ財団Twitter
+    label: Cardano Foundation Twitter
 content_body: |
-  Loremのイプサムの嘆き、AMET consecteturのadipiscingのELIT、sedのtemporと活力、そのような労働と悲しみ、eiusmod行うにはいくつかの重要な事柄に座ります。時間が経つにつれて、またfeugiat nisl ID velitのUTのFusceのtortorの価格。栄養栄養疾患のバレーボールの住民。 Rhoncusはrhoncusの白毫のnequeをmattis。ノー交流tortor履歴書のaliquamのERAT volutpatプルスviverra。 Euのconsequat viverra履歴書congue交流フェリス。ストレスとストレスが、唯一のプル。 NEC ultrices viverraフストDUI SAPIEN eget miです。瞬時にPenatibusスーパーボウルの山々。しかし、マイクロ波は私の自由を必要とします。 NECのtincidunt orciのeuismod存在。宿題を投資するパフォーマンスの栄養は大衆組織をultricies。ウラジミールサッカーライオンポットテレビは、要素のEuに設定します。しかし、今、著者のポット温度という。 Malesuadaは交流turpisの性排出物をFAMES。 1つの顧客利便性が嫌いジャスミンを憎みます。ナムの飢餓と貧困が、時間によってポットと醜いです。サッカーカートン要素NIBH領域は、今テレビです。 consectetuer adipiscing ELIT Praesent condimentum aliquetビバンダムのために常に明日です。ウェスチングハウスピーナッツソースまたは質量の温度まで。フリーランニングのための技術のニンジンです。何aliquetのporttitorラクスのluctusのvulputateはありません。臨床ゲートウェイのトラブルシューティングか。
+  Cardanoはオープンソースプロジェクトです。
 
-  _妊婦QUIS blandit turpis Loremのイプサム悲しみは通りの過程で、座っています。人生の、そして山々は、DIS分娩中ultriciesレオQUIS、congue生まれなければなりません。このベッドはporttitorで素晴らしいtristiqueのPraesentのfringillaのSEMのcursusです。子供ティル直径を憎みます。_
+  Cardanoはソフトウェアプラットフォームのみを提供します。いかなるブロックチェーン資産、デジタル通貨、暗号通貨または関連資産についても、独立したデューディリジェンスや実質的なレビューを行うことはありません。投資者は、自身の投資評価、自己判断に基くブロックチェーン資産取引きを行うかどうかの決定、Cardanoでブロックチェーン資産取引きを行うかどうかの決定について、全面的に単独で責任を負います。
+
+  投資調査に基づいて取引きされるブロックチェーン資産の価値が増加しない、または減少することはよくあります。同様に、投資調査に基づいて取引きするブロックチェーン資産の価格は、取引き後に上昇する場合も下落する場合もあります。
+
+  [インセンティブ付きテストネット利用規約](https://static.iohk.io/docs/testnet/TermsofUse-IOHKIncentivizedTestnet-EN.pdf)
 ---

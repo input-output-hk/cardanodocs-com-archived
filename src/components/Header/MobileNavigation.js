@@ -1,26 +1,48 @@
 import React, { useState, Fragment, useEffect } from 'react'
 import styled from 'styled-components'
+import { LanguageConsumer } from '../../state'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Query from './Query'
+import PropTypes from 'prop-types'
 import Link from '../Link'
 import { MdMenu, MdClose } from 'react-icons/md'
-import { addEventListener, removeEventListener, getScrollOffset, scrollTo } from '../../helpers/dom'
+import {
+  addEventListener,
+  removeEventListener,
+  getScrollOffset,
+  scrollTo
+} from '../../helpers/dom'
+import { SearchField } from '../Search'
+import PickerContainer from '../PickerContainer'
+import { navigate } from 'gatsby'
+
+const MobilePicker = styled.div`
+  > div {
+    position: static;
+    right: unset;
+    transform: translateX(0);
+  }
+`
 
 const Container = styled.div`
-  position: fixed;
+  position: absolute;
   width: 100%;
   z-index: 4;
   left: 0;
   top: 0;
-  
+
   .toggle-menu {
     position: absolute;
     z-index: 5;
-    top: 1rem;
+    top: 2rem;
     right: 1rem;
     height: 3.2rem;
     color: ${({ theme }) => theme.colors.interactive};
     font-size: 3.4rem;
+  }
+
+  @media (min-width: ${({ theme }) => theme.dimensions.mobileBreakpoint - 1}px) {
+    display: none;
   }
 `
 
@@ -33,7 +55,7 @@ const Nav = styled.nav`
   width: 100%;
   position: relative;
   transform: translate(0, 0);
-  background-color: ${({ theme }) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.primary};
   z-index: 2;
   width: 100%;
   padding: 0 1rem;
@@ -64,7 +86,7 @@ const Nav = styled.nav`
       &:hover,
       &.active,
       &:focus {
-        color: ${({ theme }) => theme.colors.text}
+        color: ${({ theme }) => theme.colors.text};
       }
     }
   }
@@ -88,9 +110,9 @@ const Nav = styled.nav`
   }
 `
 
-const MobileNavigation = () => {
-  const [ scrollPosition, setScrollPosition ] = useState(getScrollOffset())
-  const [ mobileNavVisible, setMobileNavVisible ] = useState(false)
+const MobileNavigation = ({ className }) => {
+  const [scrollPosition, setScrollPosition] = useState(getScrollOffset())
+  const [mobileNavVisible, setMobileNavVisible] = useState(false)
 
   const toggleMobileNav = e => {
     e.preventDefault()
@@ -116,6 +138,10 @@ const MobileNavigation = () => {
     removeEventListener('scroll', onScroll)
   }
 
+  const onSubmit = (lang) => (value) => {
+    navigate(`/${lang}/search/?query=${encodeURIComponent(value)}`)
+  }
+
   useEffect(() => {
     removeEventListeners()
     addEventListeners()
@@ -123,18 +149,20 @@ const MobileNavigation = () => {
     return () => {
       removeEventListeners()
     }
-  }, [ mobileNavVisible ])
+  }, [mobileNavVisible])
 
   return (
-    <Container className='text-align-center'>
+    <Container className={`text-align-center ${className}`}>
       <Query
-        render={({ navigation }) => (
+        render={items => (
           <Fragment>
             <Link
               href='/'
               onClick={toggleMobileNav}
               className='toggle-menu'
-              tracking={{ label: `mobile_navigation_${mobileNavVisible ? 'close' : 'open'}` }}
+              tracking={{
+                label: `mobile_navigation_${mobileNavVisible ? 'close' : 'open'}`
+              }}
             >
               {!mobileNavVisible && <MdMenu />}
               {mobileNavVisible && <MdClose />}
@@ -144,58 +172,49 @@ const MobileNavigation = () => {
               transitionEnterTimeout={500}
               transitionLeaveTimeout={350}
             >
-              { mobileNavVisible &&
+              {mobileNavVisible && (
                 <Nav key='nav' className='text-transform-uppercase'>
                   <ul>
-                    <li>
-                      <Link
-                        onClick={closeNav}
-                        href='/'
-                        activeClassName='active'
-                        tracking={{ label: 'mobile_navigation_home' }}
-                      >
-                        {navigation.labels.home}
-                      </Link>
+                    {items.map((item, i) => (
+                      <li key={i}>
+                        <Link
+                          href={item.path}
+                          onClick={closeNav}
+                          activeClassName='active'
+                          tracking={{
+                            label: `desktop_navigation_${item.path}`
+                          }}
+                          title={item.label}
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                    <li className='search-input'>
+                      <LanguageConsumer>
+                        {({ lang }) => (
+                          <SearchField onSubmit={onSubmit(lang)} lang={lang} />
+                        )}
+                      </LanguageConsumer>
                     </li>
                     <li>
-                      <Link
-                        onClick={closeNav}
-                        href='/features/'
-                        activeClassName='active'
-                        tracking={{ label: 'mobile_navigation_features' }}
-                      >
-                        {navigation.labels.features}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        onClick={closeNav}
-                        href='/documentation/'
-                        activeClassName='active'
-                        tracking={{ label: 'mobile_navigation_documentation' }}
-                      >
-                        {navigation.labels.documentation}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        onClick={closeNav}
-                        href='/components/'
-                        activeClassName='active'
-                        tracking={{ label: 'mobile_navigation_components' }}
-                      >
-                        {navigation.labels.components}
-                      </Link>
+                      <MobilePicker>
+                        <PickerContainer />
+                      </MobilePicker>
                     </li>
                   </ul>
                 </Nav>
-              }
+              )}
             </ReactCSSTransitionGroup>
           </Fragment>
         )}
       />
     </Container>
   )
+}
+
+MobileNavigation.propTypes = {
+  className: PropTypes.string
 }
 
 export default MobileNavigation
