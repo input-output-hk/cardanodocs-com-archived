@@ -12,7 +12,6 @@ const Container = styled.div`
 `
 
 const Nav = styled.nav`
-  text-transform: uppercase;
   > ul > li {
     position: relative;
     @media (min-width:${({ theme }) => theme.dimensions.screenSizes.medium}px) {
